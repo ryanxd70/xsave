@@ -1,4 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+// Fix: Changed 'import type' to 'import' for Next.js types to ensure compatibility with the build toolchain.
+import { NextApiRequest, NextApiResponse } from 'next';
 import type { VideoData, Variant } from '../../types';
 import ytdlp from 'yt-dlp-exec';
 

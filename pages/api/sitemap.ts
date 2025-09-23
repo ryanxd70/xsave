@@ -1,44 +1,56 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+// Fix: Changed 'import type' to 'import' for Next.js types to ensure compatibility with the build toolchain.
+import { NextApiRequest, NextApiResponse } from 'next';
 
-const siteUrl = 'https://xsave.app'; // Hardcode to prevent environment issues
+const siteUrl = 'https://xsave.app';
 const locales = [
   'en', 'id', 'vi', 'ms', 'jv', 'cs', 'es', 'fr', 'de', 'el',
   'hu', 'it', 'nl', 'pl', 'pt', 'ro', 'th', 'tr', 'uk', 'ru',
   'hi', 'ko', 'zh-CN', 'zh-TW', 'ja'
 ];
 const defaultLocale = 'en';
-const staticPages = ['/about', '/privacy', '/disclaimer', '/contact'];
+// These are the canonical page paths in the default locale.
+const staticPages = ['', '/about', '/privacy', '/disclaimer', '/contact']; 
+
+// Use a fixed date for lastmod for static content. 
+// This should only be updated when the content on these pages actually changes.
+const lastmod = '2024-05-20'; 
 
 const generateSitemap = (): string => {
-    const pages = ['', ...staticPages]; // Include the homepage
-    const lastmod = new Date().toISOString().split('T')[0];
+    const urlEntries = staticPages.map(pagePath => {
+        // The canonical URL is the default language (English) version.
+        const canonicalUrl = `${siteUrl}${pagePath || '/'}`;
 
-    const urlEntries = pages.map(pagePath => {
-        const urlBlock = [
-            '  <url>',
-            `    <loc>${siteUrl}${pagePath || '/'}</loc>`,
-            `    <lastmod>${lastmod}</lastmod>`,
-            '    <changefreq>daily</changefreq>',
-            '    <priority>0.7</priority>'
-        ];
-        
-        locales.forEach(locale => {
+        const alternateLinks = locales.map(locale => {
             const localePrefix = locale === defaultLocale ? '' : `/${locale}`;
             const href = `${siteUrl}${localePrefix}${pagePath || ''}`;
-            urlBlock.push(`    <xhtml:link rel="alternate" hreflang="${locale}" href="${href}"/>`);
-        });
+            return `    <xhtml:link rel="alternate" hreflang="${locale}" href="${href}"/>`;
+        }).join('\n');
 
-        urlBlock.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${siteUrl}${pagePath || '/'}"/>`);
+        const xDefaultLink = `    <xhtml:link rel="alternate" hreflang="x-default" href="${canonicalUrl}"/>`;
 
-        urlBlock.push('  </url>');
-        return urlBlock.join('\n');
-    }).join('\n');
+        return `
+  <url>
+    <loc>${canonicalUrl}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>${pagePath === '' ? '1.0' : '0.8'}</priority>
+${alternateLinks}
+${xDefaultLink}
+  </url>`;
+    }).join('');
 
-    return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urlEntries}\n</urlset>`;
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urlEntries}
+</urlset>`;
 };
 
 const generateSitemapIndex = (): string => {
-    return `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <sitemap>\n    <loc>${siteUrl}/sitemap-0.xml</loc>\n  </sitemap>\n</sitemapindex>`;
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${siteUrl}/sitemap-0.xml</loc>
+  </sitemap>
+</sitemapindex>`;
 };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -54,11 +66,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
             return res.status(404).end();
         }
 
-        res.setHeader('Content-Type', 'text/xml; charset=utf-8');
+        res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+        res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate'); // Cache for 24 hours
         res.status(200).send(content);
 
     } catch (e) {
-        console.error('Sitemap generation error:', e);
+        let message = 'Unknown Error';
+        if (e instanceof Error) message = e.message;
+        console.error('Sitemap generation error:', message);
         res.status(500).end();
     }
 }
