@@ -100,5 +100,9 @@
     "contact_form_error_name": "Sila masukkan nama anda.",
     "contact_form_error_email": "Sila masukkan alamat e-mel yang sah.",
     "contact_form_error_message": "Sila masukkan mesej.",
-    "contact_prompt": "Jika anda memerlukan maklumat lanjut atau mempunyai sebarang soalan, sila hubungi kami melalui e-mel di <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a>"
+    "contact_prompt": "Jika anda memerlukan maklumat lanjut atau mempunyai sebarang soalan, sila hubungi kami melalui e-mel di <a href=\"mailto:support@xsave.app\">support@xsave.app</a>",
+    "download_another_video": "Muat Turun Video Lain",
+    "not_found_title": "Halaman Tidak Ditemui",
+    "not_found_description": "Maaf, halaman yang anda cari tidak wujud atau telah dialihkan.",
+    "go_back_home": "Kembali ke Laman Utama"
 }

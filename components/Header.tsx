@@ -44,20 +44,19 @@ const Header: React.FC = () => {
         <>
             <header className="bg-gray-900 text-white z-40 shadow-lg">
                 <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
-                    <Link href="/" legacyBehavior>
-                        <a 
-                           onClick={() => setIsMenuOpen(false)} 
-                           className="block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white rounded-md" 
-                           aria-label="Go to homepage"
-                        >
-                            <XSaveLogoIcon className="h-9 w-auto text-white" />
-                        </a>
+                    <Link
+                       href="/"
+                       onClick={() => setIsMenuOpen(false)} 
+                       className="block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white rounded-md" 
+                       aria-label="Go to homepage"
+                    >
+                        <XSaveLogoIcon className="h-9 w-auto text-white" />
                     </Link>
                     <nav className="flex items-center gap-4">
                         <div className="hidden md:flex items-center gap-6">
-                            <Link href="/" legacyBehavior><a className="text-gray-300 hover:text-white transition-colors text-sm font-medium">{t('home')}</a></Link>
-                            <Link href="/#how-to" scroll={true} legacyBehavior><a className="text-gray-300 hover:text-white transition-colors text-sm font-medium">{t('how_to_use_nav')}</a></Link>
-                            <Link href="/#faq" scroll={true} legacyBehavior><a className="text-gray-300 hover:text-white transition-colors text-sm font-medium">{t('faq')}</a></Link>
+                            <Link href="/" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">{t('home')}</Link>
+                            <Link href="/#how-to" scroll={true} className="text-gray-300 hover:text-white transition-colors text-sm font-medium">{t('how_to_use_nav')}</Link>
+                            <Link href="/#faq" scroll={true} className="text-gray-300 hover:text-white transition-colors text-sm font-medium">{t('faq')}</Link>
                         </div>
                         <div className="hidden md:block">
                             <MoreDropdown />
@@ -118,13 +117,14 @@ const Header: React.FC = () => {
                     </div>
                     <nav className="flex flex-col p-4 space-y-2">
                          {navLinks.map(link => (
-                            <Link key={link.href} href={link.href} scroll={link.scroll} legacyBehavior>
-                                <a
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className="text-gray-300 hover:bg-gray-800 hover:text-white rounded-md px-3 py-2 text-base font-medium transition-colors"
-                                >
-                                    {link.label}
-                                </a>
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                scroll={link.scroll}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="text-gray-300 hover:bg-gray-800 hover:text-white rounded-md px-3 py-2 text-base font-medium transition-colors"
+                            >
+                                {link.label}
                             </Link>
                          ))}
                     </nav>

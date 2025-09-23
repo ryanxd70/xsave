@@ -80,7 +80,7 @@
     "disclaimer_accuracy_title": "İçerik Doğruluğu",
     "disclaimer_accuracy_p1": "Güvenilir bir hizmet sunmaya çalışsak da, video indirme bağlantılarının doğruluğunu veya kullanılabilirliğini garanti etmiyoruz. Hizmetin işlevselliği, Twitter/X içeriğinin sürekli erişilebilirliğine bağlıdır.",
     "disclaimer_external_links_title": "Harici Bağlantılar Sorumluluk Reddi",
-    "disclaimer_external_links_p1": "Site, üçüncü taraflara ait veya onlardan kaynaklanan diğer web sitelerine veya içeriğe bağlantılar içerebilir. Bu tür harici bağlantılar tarafımızdan doğruluk, yeterlilik, geçerlilik, güvenilirlik, kullanılabilirlik veya eksiksizlik açısından araştırılmaz, izlenmez veya kontrol edilmez.",
+    "disclaimer_external_links_p1": "Site, üçüncü taraflara ait veya onlardan kaynaklanan diğer web sitelerine veya içeriğe bağlantılar içerebilir. Bu tür harici bağlantılar tarafımızdan doğruluk, yeterlilik, geçerlilik, güvenilirlik, kullanılabilirlik veya eksiklik açısından araştırılmaz, izlenmez veya kontrol edilmez.",
     "disclaimer_personal_responsibility_title": "Kişisel Sorumluluk",
     "disclaimer_personal_responsibility_p1": "Hizmetimiz aracılığıyla indirdiğiniz her türlü içerikten yalnızca siz sorumlusunuz. Herhangi bir telif hakkı yasasını veya Twitter/X'in hizmet şartlarını ihlal etmediğinizden emin olmak sizin sorumluluğunuzdadır. XSave, bu hizmetin kötüye kullanılmasından sorumlu değildir.",
     "disclaimer_no_affiliation_title": "Bağlantı Yok",
@@ -100,5 +100,5 @@
     "contact_form_error_name": "Lütfen adınızı girin.",
     "contact_form_error_email": "Lütfen geçerli bir e-posta adresi girin.",
     "contact_form_error_message": "Lütfen bir mesaj girin.",
-    "contact_prompt": "Daha fazla bilgiye ihtiyacınız varsa veya herhangi bir sorunuz varsa, lütfen <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a> adresinden e-posta yoluyla bizimle iletişime geçmekten çekinmeyin."
+    "contact_prompt": "Daha fazla bilgiye ihtiyacınız varsa veya herhangi bir sorunuz varsa, lütfen <a href=\"mailto:support@xsave.app\">support@xsave.app</a> adresinden e-posta yoluyla bizimle iletişime geçmekten çekinmeyin."
 }

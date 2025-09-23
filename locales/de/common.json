@@ -24,6 +24,9 @@
     "error_private_video": "Dieses Video ist privat, wurde gelöscht oder stammt von einem Konto, auf das Sie keinen Zugriff haben.",
     "error_bad_response": "Videodaten konnten nicht abgerufen werden. Der Tweet enthält möglicherweise kein Video oder es gab einen Serverfehler.",
     "error_generic": "Ein unbekannter Fehler ist aufgetreten. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+    "error_paste_failed": "Inhalt der Zwischenablage konnte nicht gelesen werden.",
+    "paste_from_clipboard": "Aus Zwischenablage einfügen",
+    "clear_input": "Eingabe löschen",
     "xsave_title": "X Save: Twitter Video Downloader",
     "xsave_description_1": "XSave.app ist ein Twitter-Video-Downloader-Tool; es ist schnell, sicher und zuverlässig. Mit unserem Tool können Sie ein virales Meme, ein Nachrichten-Update oder ein beliebiges Video, GIF usw. speichern. Das Beste an XSave ist, dass Sie sich nicht anmelden müssen, um es zu verwenden; fügen Sie einfach den Link ein und laden Sie Twitter-Videos in HD herunter.",
     "xsave_description_2": "Unser Tool wurde mit Blick auf die Benutzererfahrung entwickelt; es ist keine Installation von Browser-Erweiterungen oder Software erforderlich. Sobald Sie die URL eines Twitter/X-Videos einfügen, holt unser leistungsstarkes Backend-System alle verfügbaren Videoqualitäten für Sie zum Herunterladen mit einem Klick.",
@@ -100,5 +103,9 @@
     "contact_form_error_name": "Bitte geben Sie Ihren Namen ein.",
     "contact_form_error_email": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
     "contact_form_error_message": "Bitte geben Sie eine Nachricht ein.",
-    "contact_prompt": "Wenn Sie weitere Informationen benötigen oder Fragen haben, können Sie uns gerne per E-Mail unter <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a> kontaktieren"
+    "contact_prompt": "Wenn Sie weitere Informationen benötigen oder Fragen haben, können Sie uns gerne per E-Mail unter <a href=\"mailto:support@xsave.app\">support@xsave.app</a> kontaktieren",
+    "download_another_video": "Weiteres Video herunterladen",
+    "not_found_title": "Seite nicht gefunden",
+    "not_found_description": "Entschuldigung, die von Ihnen gesuchte Seite existiert nicht oder wurde verschoben.",
+    "go_back_home": "Zurück zur Startseite"
 }

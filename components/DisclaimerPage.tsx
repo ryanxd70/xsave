@@ -16,7 +16,7 @@ const DisclaimerPageContent: React.FC = () => {
       <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6">
         {t('disclaimer_page_title')}
       </h1>
-      <div className="space-y-8 text-gray-900 dark:text-gray-300 text-base">
+      <div className="content-links space-y-8 text-gray-900 dark:text-gray-300 text-base">
         <p>{t('disclaimer_intro')}</p>
 
         <Section title={t('disclaimer_accuracy_title')}>

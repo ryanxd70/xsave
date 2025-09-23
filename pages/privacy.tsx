@@ -1,4 +1,3 @@
-
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -6,9 +5,7 @@ import PrivacyPolicyPageContent from '../components/PrivacyPolicyPage';
 import { useLanguage } from '../contexts/LanguageContext';
 import { getPageMetadata, getBreadcrumbSchema } from '../constants';
 import { languages } from '../i18n-config';
-import type { GetStaticProps } from 'next';
-import path from 'path';
-import fs from 'fs';
+import { getStaticProps } from '../lib/translations';
 
 const PrivacyPage = () => {
     const { t } = useLanguage();
@@ -50,29 +47,6 @@ const PrivacyPage = () => {
     );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const defaultLocale = 'en';
-  
-  const loadTranslation = (lang: string) => {
-    try {
-      const filePath = path.join(process.cwd(), 'locales', lang, 'common.json');
-      const jsonContent = fs.readFileSync(filePath, 'utf8');
-      return JSON.parse(jsonContent);
-    } catch (error) {
-      console.warn(`Could not load translation file for locale: ${lang}. Falling back.`);
-      return {};
-    }
-  };
-
-  const translations = loadTranslation(locale || defaultLocale);
-  const fallbackTranslations = loadTranslation(defaultLocale);
-
-  return {
-    props: {
-      translations,
-      fallbackTranslations,
-    },
-  };
-};
+export { getStaticProps };
 
 export default PrivacyPage;

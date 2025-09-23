@@ -100,5 +100,9 @@
     "contact_form_error_name": "이름을 입력하세요.",
     "contact_form_error_email": "유효한 이메일 주소를 입력하세요.",
     "contact_form_error_message": "메시지를 입력하세요.",
-    "contact_prompt": "더 많은 정보가 필요하거나 질문이 있으시면 언제든지 이메일로 문의해 주세요: <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a>"
+    "contact_prompt": "더 많은 정보가 필요하거나 질문이 있으시면 언제든지 이메일로 문의해 주세요: <a href=\"mailto:support@xsave.app\">support@xsave.app</a>",
+    "download_another_video": "다른 동영상 다운로드",
+    "not_found_title": "페이지를 찾을 수 없습니다",
+    "not_found_description": "죄송합니다. 찾고 계신 페이지가 존재하지 않거나 이동되었습니다.",
+    "go_back_home": "홈으로 돌아가기"
 }

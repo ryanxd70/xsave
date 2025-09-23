@@ -100,5 +100,9 @@
     "contact_form_error_name": "कृपया अपना नाम दर्ज करें।",
     "contact_form_error_email": "कृपया एक मान्य ईमेल पता दर्ज करें।",
     "contact_form_error_message": "कृपया एक संदेश दर्ज करें।",
-    "contact_prompt": "यदि आपको और जानकारी चाहिए या कोई प्रश्न हैं, तो कृपया हमें <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a> पर ईमेल द्वारा संपर्क करने में संकोच न करें"
+    "contact_prompt": "यदि आपको और जानकारी चाहिए या कोई प्रश्न हैं, तो कृपया हमें <a href=\"mailto:support@xsave.app\">support@xsave.app</a> पर ईमेल द्वारा संपर्क करने में संकोच न करें",
+    "download_another_video": "दूसरा वीडियो डाउनलोड करें",
+    "not_found_title": "पृष्ठ नहीं मिला",
+    "not_found_description": "क्षमा करें, आप जिस पृष्ठ की तलाश कर रहे हैं वह मौजूद नहीं है या उसे स्थानांतरित कर दिया गया है।",
+    "go_back_home": "मुख पृष्ठ पर वापस जाएं"
 }

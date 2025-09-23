@@ -100,5 +100,5 @@
     "contact_form_error_name": "Por favor, digite seu nome.",
     "contact_form_error_email": "Por favor, digite um endereço de email válido.",
     "contact_form_error_message": "Por favor, digite uma mensagem.",
-    "contact_prompt": "Se precisar de mais informações ou tiver alguma dúvida, sinta-se à vontade para nos contatar por email em <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a>"
+    "contact_prompt": "Se precisar de mais informações ou tiver alguma dúvida, sinta-se à vontade para nos contatar por email em <a href=\"mailto:support@xsave.app\">support@xsave.app</a>"
 }

@@ -1,11 +1,10 @@
+
 import React, { useState, useRef, useEffect } from 'react';
-// Fix: Import Link for Next.js navigation.
 import Link from 'next/link';
 import { useLanguage } from '../contexts/LanguageContext';
 import { ChevronDownIcon } from './icons/ChevronDownIcon';
 import type { Page } from '../types';
 
-// Fix: Removed setCurrentPage from props as navigation is now handled by Next.js router.
 const MoreDropdown: React.FC = () => {
   const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
@@ -23,14 +22,12 @@ const MoreDropdown: React.FC = () => {
     };
   }, [wrapperRef]);
   
-  const menuItems: { label: string; page: Page }[] = [
+  const menuItems: { label: string; page: Page; icon?: React.ReactNode }[] = [
     { label: t('about'), page: 'about' },
     { label: t('privacy_policy'), page: 'privacy' },
     { label: t('disclaimer_page_title'), page: 'disclaimer' },
     { label: t('contact_us'), page: 'contact' },
   ];
-  
-  // Fix: Removed handleNavClick as simple links are now handled by <Link>.
 
   return (
     <div className="relative" ref={wrapperRef}>
@@ -51,21 +48,18 @@ const MoreDropdown: React.FC = () => {
           aria-orientation="vertical"
         >
           <div className="py-1">
-            {/* Fix: Replaced buttons with Next.js Links for navigation. */}
             {menuItems.map(item => (
                 <Link
                   key={item.page}
                   href={`/${item.page}`}
-                  passHref
-                  legacyBehavior
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  role="menuitem"
                 >
-                    <a
-                      onClick={() => setIsOpen(false)}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                      role="menuitem"
-                    >
-                      {item.label}
-                    </a>
+                  <span className="flex items-center gap-2">
+                    {item.label}
+                    {item.icon}
+                  </span>
                 </Link>
             ))}
           </div>

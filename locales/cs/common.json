@@ -24,6 +24,9 @@
     "error_private_video": "Toto video je soukromé, bylo smazáno nebo pochází z účtu, ke kterému nemáte přístup.",
     "error_bad_response": "Nepodařilo se získat data o videu. Tweet možná neobsahuje video nebo došlo k chybě serveru.",
     "error_generic": "Došlo k neznámé chybě. Zkontrolujte prosím připojení a zkuste to znovu.",
+    "error_paste_failed": "Nelze číst ze schránky.",
+    "paste_from_clipboard": "Vložit ze schránky",
+    "clear_input": "Vymazat vstup",
     "xsave_title": "X Save: Stahovač videí z Twitteru",
     "xsave_description_1": "XSave.app je nástroj pro stahování videí z Twitteru; je rychlý, bezpečný a spolehlivý. Pomocí našeho nástroje si můžete uložit virální meme, novinku nebo jakékoli video, GIF atd. Nejlepší na XSave je, že se nemusíte registrovat, abyste ho mohli používat; stačí vložit odkaz a stáhnout si videa z Twitteru v HD.",
     "xsave_description_2": "Náš nástroj je vytvořen s ohledem na uživatelský zážitek; není třeba instalovat žádné rozšíření prohlížeče ani software. Jakmile vložíte URL jakéhokoli videa z Twitteru/X, náš výkonný backendový systém načte všechny dostupné kvality videa, které si můžete stáhnout jedním kliknutím.",
@@ -100,5 +103,9 @@
     "contact_form_error_name": "Zadejte prosím své jméno.",
     "contact_form_error_email": "Zadejte prosím platnou e-mailovou adresu.",
     "contact_form_error_message": "Zadejte prosím zprávu.",
-    "contact_prompt": "Pokud potřebujete další informace nebo máte nějaké dotazy, neváhejte nás kontaktovat e-mailem na adrese <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a>"
+    "contact_prompt": "Pokud potřebujete další informace nebo máte nějaké dotazy, neváhejte nás kontaktovat e-mailem na adrese <a href=\"mailto:support@xsave.app\">support@xsave.app</a>",
+    "download_another_video": "Stáhnout další video",
+    "not_found_title": "Stránka nenalezena",
+    "not_found_description": "Omlouváme se, stránka, kterou hledáte, neexistuje nebo byla přesunuta.",
+    "go_back_home": "Zpět na domovskou stránku"
 }

@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide the Vercel Toolbar on preview deployments */
+vercel-toolbar {
+  display: none;
+}
+
+@layer components {
+  .content-links a {
+    @apply text-blue-600 dark:text-blue-400 hover:underline;
+  }
+}

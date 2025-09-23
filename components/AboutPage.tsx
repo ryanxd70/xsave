@@ -9,7 +9,7 @@ const AboutPageContent: React.FC = () => {
       <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6">
         {t('about_title')}
       </h1>
-      <div className="space-y-8 text-gray-900 dark:text-gray-300 text-base">
+      <div className="content-links space-y-8 text-gray-900 dark:text-gray-300 text-base">
         <div className="space-y-4">
             <p>{t('about_p1')}</p>
             <p>{t('about_p2')}</p>

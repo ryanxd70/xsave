@@ -62,7 +62,7 @@ export const getPageMetadata = (t: TFunction): Record<Page, { title: string; des
   contact: {
     title: `${t('contact_title')} - XSave`,
     description: t('contact_intro'),
-  }
+  },
 });
 
 export const getBreadcrumbSchema = (page: Page, t: TFunction, siteUrl: string, locale?: string) => {

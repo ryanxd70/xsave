@@ -24,6 +24,9 @@
     "error_private_video": "This video is private, has been deleted, or is from an account you do not have access to.",
     "error_bad_response": "Failed to get video data. The tweet might not contain a video, or there was a server error.",
     "error_generic": "An unknown error occurred. Please check your connection and try again.",
+    "error_paste_failed": "Failed to read from clipboard.",
+    "paste_from_clipboard": "Paste from clipboard",
+    "clear_input": "Clear input",
     "xsave_title": "X Save: Twitter Video Downloader",
     "xsave_description_1": "XSave.app is a Twitter video downloader tool; it's fast, secure, and reliable. Using our tool, you can save a viral meme, news update, or any video, GIF, etc. The best thing about XSave is that you don't need to sign up to use it; paste the link and download Twitter videos in HD.",
     "xsave_description_2": "Our tool is built with the user experience in mind; there's no need to install any browser extension or software. Once you paste the URL of any Twitter/X video, our powerful backend system will fetch all the available video qualities for you to download in one click.",
@@ -100,5 +103,9 @@
     "contact_form_error_name": "Please enter your name.",
     "contact_form_error_email": "Please enter a valid email address.",
     "contact_form_error_message": "Please enter a message.",
-    "contact_prompt": "If you require any more information or have any questions, please feel free to contact us by email at <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a>"
+    "contact_prompt": "If you require any more information or have any questions, please feel free to contact us by email at <a href=\"mailto:support@xsave.app\">support@xsave.app</a>",
+    "download_another_video": "Download Another Video",
+    "not_found_title": "Page Not Found",
+    "not_found_description": "Sorry, the page you are looking for does not exist or has been moved.",
+    "go_back_home": "Go Back Home"
 }

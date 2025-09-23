@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Link from 'next/link';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -18,10 +19,8 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           
           <div className="flex flex-col items-center md:items-start">
-            <Link href="/" legacyBehavior>
-                <a className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white rounded-md" aria-label="Go to homepage">
-                    <XSaveLogoIcon className="h-9 w-auto text-white" />
-                </a>
+            <Link href="/" className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white rounded-md" aria-label="Go to homepage">
+                <XSaveLogoIcon className="h-9 w-auto text-white" />
             </Link>
             <p className="mt-4 text-sm">
               {t('footer_site_description')}
@@ -39,20 +38,20 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-center">
             <h4 className="font-semibold text-white mb-4 uppercase tracking-wider text-sm">Quick Links</h4>
             <ul className="space-y-3">
-              <li><Link href="/" legacyBehavior><a className="hover:text-white transition-colors text-sm">XSave</a></Link></li>
-              <li><Link href="/#how-to" scroll={true} legacyBehavior><a className="hover:text-white transition-colors text-sm">{t('how_to_use_nav')}</a></Link></li>
-              <li><Link href="/#home" scroll={true} legacyBehavior><a className="hover:text-white transition-colors text-sm">{t('download')}</a></Link></li>
-              <li><Link href="/#faq" scroll={true} legacyBehavior><a className="hover:text-white transition-colors text-sm">{t('faq')}</a></Link></li>
+              <li><Link href="/" className="hover:text-white transition-colors text-sm">XSave</Link></li>
+              <li><Link href="/#how-to" scroll={true} className="hover:text-white transition-colors text-sm">{t('how_to_use_nav')}</Link></li>
+              <li><Link href="/#home" scroll={true} className="hover:text-white transition-colors text-sm">{t('download')}</Link></li>
+              <li><Link href="/#faq" scroll={true} className="hover:text-white transition-colors text-sm">{t('faq')}</Link></li>
             </ul>
           </div>
 
           <div className="flex flex-col items-center md:items-start">
             <h4 className="font-semibold text-white mb-4 uppercase tracking-wider text-sm">{t('footer_nav_company')}</h4>
             <ul className="space-y-3 text-center md:text-left">
-              <li><Link href="/about" legacyBehavior><a className="hover:text-white transition-colors text-sm">{t('about')}</a></Link></li>
-              <li><Link href="/contact" legacyBehavior><a className="hover:text-white transition-colors text-sm">{t('contact_us')}</a></Link></li>
-              <li><Link href="/privacy" legacyBehavior><a className="hover:text-white transition-colors text-sm">{t('privacy_policy')}</a></Link></li>
-              <li><Link href="/disclaimer" legacyBehavior><a className="hover:text-white transition-colors text-sm">{t('disclaimer_page_title')}</a></Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors text-sm">{t('about')}</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors text-sm">{t('contact_us')}</Link></li>
+              <li><Link href="/privacy" className="hover:text-white transition-colors text-sm">{t('privacy_policy')}</Link></li>
+              <li><Link href="/disclaimer" className="hover:text-white transition-colors text-sm">{t('disclaimer_page_title')}</Link></li>
             </ul>
           </div>
 

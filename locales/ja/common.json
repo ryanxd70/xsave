@@ -100,5 +100,9 @@
     "contact_form_error_name": "お名前を入力してください。",
     "contact_form_error_email": "有効なメールアドレスを入力してください。",
     "contact_form_error_message": "メッセージを入力してください。",
-    "contact_prompt": "さらに詳しい情報が必要な場合やご質問がある場合は、お気軽にメールでお問い合わせください：<a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a>"
+    "contact_prompt": "さらに詳しい情報が必要な場合やご質問がある場合は、お気軽にメールでお問い合わせください：<a href=\"mailto:support@xsave.app\">support@xsave.app</a>",
+    "download_another_video": "別の動画をダウンロード",
+    "not_found_title": "ページが見つかりません",
+    "not_found_description": "申し訳ありませんが、お探しのページは存在しないか、移動されました。",
+    "go_back_home": "ホームに戻る"
 }

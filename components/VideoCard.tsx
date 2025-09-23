@@ -1,3 +1,4 @@
+
 import React from 'react';
 import type { VideoData } from '../types';
 import { DownloadIcon } from './icons/DownloadIcon';
@@ -31,15 +32,12 @@ const VideoCard: React.FC<VideoCardProps> = ({ videoData }) => {
                       download
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:w-96 inline-flex items-center justify-between gap-3 px-4 py-3 bg-gray-900 hover:bg-gray-800 dark:bg-blue-600 dark:hover:bg-blue-700 rounded-lg transition-colors duration-200 group text-white"
+                      className="w-full sm:w-96 inline-flex items-center justify-center gap-3 px-4 py-3 bg-gray-800 hover:bg-gray-900 text-white dark:bg-blue-600 dark:hover:bg-blue-700 rounded-lg transition-colors duration-200 group"
                     >
-                        <div className="flex items-center gap-3 overflow-hidden">
-                            <DownloadIcon className="h-5 w-5 text-gray-300 flex-shrink-0" />
+                        <div className="flex items-center gap-3">
+                            <DownloadIcon className="h-5 w-5 text-gray-400 dark:text-blue-200 flex-shrink-0" />
                             <span className="font-medium text-sm text-left truncate">{variant.quality}</span>
                         </div>
-                        {variant.size !== 'N/A' && (
-                           <span className="text-xs font-mono bg-gray-700 dark:bg-blue-500/50 px-2 py-1 rounded-md whitespace-nowrap">{variant.size}</span>
-                        )}
                     </a>
                 ))}
                 </div>

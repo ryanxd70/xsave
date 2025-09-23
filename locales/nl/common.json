@@ -100,5 +100,9 @@
     "contact_form_error_name": "Voer uw naam in.",
     "contact_form_error_email": "Voer een geldig e-mailadres in.",
     "contact_form_error_message": "Voer een bericht in.",
-    "contact_prompt": "Als u meer informatie nodig heeft of vragen heeft, neem dan gerust contact met ons op via e-mail op <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a>"
+    "contact_prompt": "Als u meer informatie nodig heeft of vragen heeft, neem dan gerust contact met ons op via e-mail op <a href=\"mailto:support@xsave.app\">support@xsave.app</a>",
+    "download_another_video": "Andere video downloaden",
+    "not_found_title": "Pagina niet gevonden",
+    "not_found_description": "Sorry, de pagina die u zoekt bestaat niet of is verplaatst.",
+    "go_back_home": "Terug naar home"
 }

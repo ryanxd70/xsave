@@ -100,5 +100,9 @@
     "contact_form_error_name": "Sila lebokake jeneng sampeyan.",
     "contact_form_error_email": "Sila lebokake alamat email sing sah.",
     "contact_form_error_message": "Sila lebokake pesen.",
-    "contact_prompt": "Yen sampeyan butuh informasi luwih lengkap utawa duwe pitakonan, aja ragu-ragu hubungi kita liwat email ing <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a>"
+    "contact_prompt": "Yen sampeyan butuh informasi luwih lengkap utawa duwe pitakonan, aja ragu-ragu hubungi kita liwat email ing <a href=\"mailto:support@xsave.app\">support@xsave.app</a>",
+    "download_another_video": "Unduh Video Liyane",
+    "not_found_title": "Kaca Ora Ditemokake",
+    "not_found_description": "Nyuwun sewu, kaca sing sampeyan goleki ora ana utawa wis dipindhah.",
+    "go_back_home": "Bali menyang Omah"
 }

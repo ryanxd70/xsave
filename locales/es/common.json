@@ -100,5 +100,9 @@
     "contact_form_error_name": "Por favor, introduce tu nombre.",
     "contact_form_error_email": "Por favor, introduce una dirección de correo electrónico válida.",
     "contact_form_error_message": "Por favor, introduce un mensaje.",
-    "contact_prompt": "Si necesitas más información o tienes alguna pregunta, no dudes en contactarnos por correo electrónico a <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a>"
+    "contact_prompt": "Si necesitas más información o tienes alguna pregunta, no dudes en contactarnos por correo electrónico a <a href=\"mailto:support@xsave.app\">support@xsave.app</a>",
+    "download_another_video": "Descargar otro video",
+    "not_found_title": "Página no encontrada",
+    "not_found_description": "Lo sentimos, la página que buscas no existe o ha sido movida.",
+    "go_back_home": "Volver al inicio"
 }

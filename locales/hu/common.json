@@ -100,5 +100,9 @@
     "contact_form_error_name": "Kérjük, adja meg a nevét.",
     "contact_form_error_email": "Kérjük, adjon meg egy érvényes e-mail címet.",
     "contact_form_error_message": "Kérjük, írjon üzenetet.",
-    "contact_prompt": "Ha további információra van szüksége, vagy bármilyen kérdése van, kérjük, vegye fel velünk a kapcsolatot e-mailben a <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a> címen"
+    "contact_prompt": "Ha további információra van szüksége, vagy bármilyen kérdése van, kérjük, vegye fel velünk a kapcsolatot e-mailben a <a href=\"mailto:support@xsave.app\">support@xsave.app</a> címen",
+    "download_another_video": "Másik videó letöltése",
+    "not_found_title": "Az oldal nem található",
+    "not_found_description": "Sajnáljuk, a keresett oldal nem létezik vagy áthelyezték.",
+    "go_back_home": "Vissza a főoldalra"
 }

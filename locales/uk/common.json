@@ -100,5 +100,5 @@
     "contact_form_error_name": "Будь ласка, введіть ваше ім'я.",
     "contact_form_error_email": "Будь ласка, введіть дійсну адресу електронної пошти.",
     "contact_form_error_message": "Будь ласка, введіть повідомлення.",
-    "contact_prompt": "Якщо вам потрібна додаткова інформація або у вас є будь-які питання, не соромтеся звертатися до нас електронною поштою за адресою <a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a>"
+    "contact_prompt": "Якщо вам потрібна додаткова інформація або у вас є будь-які питання, не соромтеся звертатися до нас електронною поштою за адресою <a href=\"mailto:support@xsave.app\">support@xsave.app</a>"
 }
