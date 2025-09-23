@@ -27,6 +27,18 @@ const nextConfig = {
     config.watchOptions.ignored = ignored;
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap?page=index',
+      },
+      {
+        source: '/sitemap-0.xml',
+        destination: '/api/sitemap?page=0',
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
