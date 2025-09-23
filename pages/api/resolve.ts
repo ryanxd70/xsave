@@ -1,4 +1,4 @@
-// Fix: Correctly import Next.js API types as type-only imports.
+// Fix: Use a type-only import for Next.js API types to resolve module resolution issues.
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { VideoData, Variant } from '../../types';
 import ytdlp from 'yt-dlp-exec';

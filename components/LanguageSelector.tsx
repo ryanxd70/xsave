@@ -51,6 +51,7 @@ const LanguageSelector: React.FC = () => {
                         key={langCode}
                         href={router.asPath}
                         locale={langCode}
+                        prefetch={false}
                         onClick={() => setIsOpen(false)}
                         className={`block w-full text-left px-4 py-2 text-sm ${
                         language === langCode

@@ -100,5 +100,9 @@
     "contact_form_error_name": "请输入您的姓名。",
     "contact_form_error_email": "请输入有效的电子邮件地址。",
     "contact_form_error_message": "请输入留言。",
-    "contact_prompt": "如果您需要更多信息或有任何疑问，请随时通过电子邮件与我们联系：<a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a>"
+    "contact_prompt": "如果您需要更多信息或有任何疑问，请随时通过电子邮件与我们联系：<a href=\"mailto:support@xsave.app\">support@xsave.app</a>",
+    "download_another_video": "下载另一个视频",
+    "not_found_title": "找不到页面",
+    "not_found_description": "抱歉，您要查找的页面不存在或已移动。",
+    "go_back_home": "返回主页"
 }

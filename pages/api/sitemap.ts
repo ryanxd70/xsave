@@ -1,4 +1,4 @@
-// Fix: Correctly import Next.js API types as type-only imports.
+// Fix: Use a type-only import for Next.js API types to resolve module resolution issues.
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const siteUrl = 'https://xsave.app';
@@ -28,20 +28,21 @@ const generateSitemap = (): string => {
 
         const xDefaultLink = `    <xhtml:link rel="alternate" hreflang="x-default" href="${canonicalUrl}"/>`;
 
-        return `
-  <url>
-    <loc>${canonicalUrl}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>${pagePath === '' ? '1.0' : '0.8'}</priority>
-${alternateLinks}
-${xDefaultLink}
-  </url>`;
+        // Building each <url> block as an array of strings and joining with newlines
+        // is more robust than multi-line template strings that can be affected by minification.
+        return [
+          '  <url>',
+          `    <loc>${canonicalUrl}</loc>`,
+          `    <lastmod>${lastmod}</lastmod>`,
+          `    <changefreq>daily</changefreq>`,
+          `    <priority>${pagePath === '' ? '1.0' : '0.8'}</priority>`,
+          alternateLinks,
+          xDefaultLink,
+          '  </url>'
+        ].join('\n');
     }).join('\n');
 
-    return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urlEntries}
-</urlset>`;
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urlEntries}\n</urlset>`;
 };
 
 const generateSitemapIndex = (): string => {

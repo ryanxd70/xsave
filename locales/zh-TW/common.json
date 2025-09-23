@@ -100,5 +100,9 @@
     "contact_form_error_name": "請輸入您的姓名。",
     "contact_form_error_email": "請輸入有效的電子郵件地址。",
     "contact_form_error_message": "請輸入留言。",
-    "contact_prompt": "如果您需要更多資訊或有任何疑問，請隨時透過電子郵件與我們聯絡：<a href=\"mailto:support@xsave.app\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">support@xsave.app</a>"
+    "contact_prompt": "如果您需要更多資訊或有任何疑問，請隨時透過電子郵件與我們聯絡：<a href=\"mailto:support@xsave.app\">support@xsave.app</a>",
+    "download_another_video": "下載另一個影片",
+    "not_found_title": "找不到頁面",
+    "not_found_description": "抱歉，您要尋找的頁面不存在或已移動。",
+    "go_back_home": "返回主頁"
 }

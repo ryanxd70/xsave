@@ -80,7 +80,7 @@
     "disclaimer_accuracy_title": "Precisão do Conteúdo",
     "disclaimer_accuracy_p1": "Embora nos esforcemos para fornecer um serviço confiável, não garantimos a precisão ou disponibilidade dos links de download de vídeo. A funcionalidade do serviço depende da acessibilidade contínua do conteúdo do Twitter/X.",
     "disclaimer_external_links_title": "Isenção de Responsabilidade de Links Externos",
-    "disclaimer_external_links_p1": "O Site pode conter links para outros sites ou conteúdo pertencente или originário de terceiros. Tais links externos não são investigados, monitorados ou verificados por nós quanto à precisão, adequação, validade, confiabilidade, disponibilidade ou completude.",
+    "disclaimer_external_links_p1": "O Site pode conter links para outros sites ou conteúdo pertencente ou originário de terceiros. Tais links externos não são investigados, monitorados ou verificados por nós quanto à precisão, adequação, validade, confiabilidade, disponibilidade ou completude.",
     "disclaimer_personal_responsibility_title": "Responsabilidade Pessoal",
     "disclaimer_personal_responsibility_p1": "Você é o único responsável por qualquer conteúdo que baixar através de nosso serviço. É sua responsabilidade garantir que você não está infringindo nenhuma lei de direitos autorais ou os termos de serviço do Twitter/X. O XSave não se responsabiliza por qualquer uso indevido deste serviço.",
     "disclaimer_no_affiliation_title": "Sem Afiliação",
@@ -100,5 +100,9 @@
     "contact_form_error_name": "Por favor, digite seu nome.",
     "contact_form_error_email": "Por favor, digite um endereço de email válido.",
     "contact_form_error_message": "Por favor, digite uma mensagem.",
-    "contact_prompt": "Se precisar de mais informações ou tiver alguma dúvida, sinta-se à vontade para nos contatar por email em <a href=\"mailto:support@xsave.app\">support@xsave.app</a>"
+    "contact_prompt": "Se precisar de mais informações ou tiver alguma dúvida, sinta-se à vontade para nos contatar por email em <a href=\"mailto:support@xsave.app\">support@xsave.app</a>",
+    "download_another_video": "Baixar Outro Vídeo",
+    "not_found_title": "Página Não Encontrada",
+    "not_found_description": "Desculpe, a página que você está procurando não existe ou foi movida.",
+    "go_back_home": "Voltar para o Início"
 }
