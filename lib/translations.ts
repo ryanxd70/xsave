@@ -1,4 +1,4 @@
-// Fix: Use a type-only import for Next.js types to resolve module resolution issues.
+// Fix: Use a type-only import for Next.js types to fix module resolution errors.
 import type { GetStaticProps } from 'next';
 import path from 'path';
 import fs from 'fs';
