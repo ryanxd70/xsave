@@ -16,38 +16,47 @@ const generateSitemapIndex = (siteUrl: string): string => `<?xml version="1.0" e
 </sitemapindex>`;
 
 const generateSitemapUrls = (siteUrl: string): string => {
-  const pages = ['', ...staticPages]; // Add root page
+    // Add the homepage (represented by an empty string) to the list of static pages.
+    const pages = ['', ...staticPages]; 
+    const lastmod = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
-  const urlEntries = pages.map(page => {
-    const loc = `${siteUrl}${page}`;
-    
-    const alternateLinks = locales.map(locale => {
-      const localePrefix = locale === defaultLocale ? '' : `/${locale}`;
-      const href = `${siteUrl}${localePrefix}${page}`;
-      return `    <xhtml:link rel="alternate" hreflang="${locale}" href="${href}"/>`;
-    }).join('\n');
-    
-    const xDefaultLocalePrefix = defaultLocale === 'en' ? '' : `/${defaultLocale}`;
-    const xDefaultHref = `${siteUrl}${xDefaultLocalePrefix}${page}`;
-    const xDefaultLink = `<xhtml:link rel="alternate" hreflang="x-default" href="${xDefaultHref}"/>`;
+    let urlsXml = '';
 
-    return `
-  <url>
-    <loc>${loc}</loc>
-${'    '}${xDefaultLink}
-${alternateLinks}
-  </url>`;
-  }).join('');
+    for (const pagePath of pages) {
+        // The canonical URL should point to the default language version (English).
+        const canonicalUrl = `${siteUrl}${pagePath}`;
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urlEntries}
-</urlset>`;
+        urlsXml += '  <url>\n';
+        urlsXml += `    <loc>${canonicalUrl}</loc>\n`;
+        urlsXml += `    <lastmod>${lastmod}</lastmod>\n`;
+        urlsXml += '    <changefreq>daily</changefreq>\n';
+        urlsXml += '    <priority>0.7</priority>\n';
+
+        // Add alternate links for every language variant of the page.
+        for (const locale of locales) {
+            const localePrefix = locale === defaultLocale ? '' : `/${locale}`;
+            // Correctly construct the URL without adding a trailing slash to the homepage.
+            const href = `${siteUrl}${localePrefix}${pagePath}`;
+            urlsXml += `    <xhtml:link rel="alternate" hreflang="${locale}" href="${href}"/>\n`;
+        }
+        
+        // Add the x-default link pointing to the default language version.
+        const xDefaultHref = `${siteUrl}${pagePath}`;
+        urlsXml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${xDefaultHref}"/>\n`;
+        
+        urlsXml += '  </url>\n';
+    }
+
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${urlsXml}</urlset>`;
 };
 
 const SitemapPage = () => null; // This component will not be rendered.
 
 export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
   const sitemapParam = params?.sitemap as string;
+  // Use SITE_URL from environment variables if available, otherwise default.
   const siteUrl = process.env.SITE_URL || 'https://xsave.app';
   
   let content = '';

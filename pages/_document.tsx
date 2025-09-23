@@ -1,10 +1,9 @@
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document';
 
 class MyDocument extends Document {
-  // FIX: In modern Next.js with i18n routing, the `locale` is automatically passed
-  // to the Document's props. Manually returning it from `getInitialProps` can cause
-  // type conflicts. Relying on the default behavior resolves the error.
-  static async getInitialProps(ctx: DocumentContext) {
+  // By explicitly typing the return value of getInitialProps, we ensure TypeScript
+  // correctly infers the props for the MyDocument component, resolving the error.
+  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const initialProps = await Document.getInitialProps(ctx);
     return initialProps;
   }
