@@ -1,5 +1,5 @@
-// Fix: Changed 'import type' to 'import' for Next.js types to ensure compatibility with the build toolchain.
-import { NextApiRequest, NextApiResponse } from 'next';
+// Fix: Correctly import Next.js API types as type-only imports.
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const siteUrl = 'https://xsave.app';
 const locales = [
@@ -37,7 +37,7 @@ const generateSitemap = (): string => {
 ${alternateLinks}
 ${xDefaultLink}
   </url>`;
-    }).join('');
+    }).join('\n');
 
     return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urlEntries}

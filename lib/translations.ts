@@ -1,5 +1,5 @@
-// Fix: Changed 'import type' to 'import' for Next.js types to ensure compatibility with the build toolchain.
-import { GetStaticProps } from 'next';
+// Fix: Correctly import Next.js types as type-only imports.
+import type { GetStaticProps } from 'next';
 import path from 'path';
 import fs from 'fs';
 import process from 'process';

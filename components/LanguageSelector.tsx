@@ -1,14 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-// Fix: The 'translations.ts' file is obsolete. 'languages' and 'LanguageCode' are now imported from 'i18n-config.ts'.
 import { languages, LanguageCode } from '../i18n-config';
 import { GlobeIcon } from './icons/GlobeIcon';
 import { ChevronDownIcon } from './icons/ChevronDownIcon';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const LanguageSelector: React.FC = () => {
-  const { language, setLanguage } = useLanguage();
+  const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -21,11 +23,6 @@ const LanguageSelector: React.FC = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [wrapperRef]);
-
-  const handleLanguageChange = (langCode: LanguageCode) => {
-    setLanguage(langCode);
-    setIsOpen(false);
-  };
 
   return (
     <div className="relative" ref={wrapperRef}>
@@ -50,9 +47,11 @@ const LanguageSelector: React.FC = () => {
         >
             <div className="py-1 grid grid-cols-2 gap-1">
                 {(Object.keys(languages) as LanguageCode[]).map((langCode) => (
-                    <button
+                    <Link
                         key={langCode}
-                        onClick={() => handleLanguageChange(langCode)}
+                        href={router.asPath}
+                        locale={langCode}
+                        onClick={() => setIsOpen(false)}
                         className={`block w-full text-left px-4 py-2 text-sm ${
                         language === langCode
                             ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
@@ -61,7 +60,7 @@ const LanguageSelector: React.FC = () => {
                         role="menuitem"
                     >
                         {languages[langCode].name}
-                    </button>
+                    </Link>
                 ))}
             </div>
         </div>
