@@ -37,6 +37,13 @@ export default async function handler(
     try {
         const videoInfo: YtdlpInfo = await ytdlp(url, {
             dumpSingleJson: true,
+            noWarnings: true,
+            noCallHome: true,
+            referer: 'https://twitter.com/',
+            // This is the key optimization: use Twitter's Syndication API, which is often faster for public tweets.
+            extractorArgs: {
+                twitter: 'api=Syndication',
+            },
         });
 
         if (!videoInfo || !videoInfo.formats) {

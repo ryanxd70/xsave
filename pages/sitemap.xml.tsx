@@ -8,38 +8,38 @@ const locales = [
 ];
 const defaultLocale = 'en';
 const staticPages = ['', '/about', '/privacy', '/disclaimer', '/contact'];
-const lastmod = '2024-05-20'; 
+const lastmod = new Date().toISOString().split('T')[0]; // Use current date
 
 const generateSitemap = (): string => {
-    const urlEntries = staticPages.map(pagePath => {
-        const canonicalUrl = `${siteUrl}${pagePath || '/'}`;
-        
-        const alternateLinks = locales.map(locale => {
+    const urlEntries = staticPages.flatMap(pagePath => {
+        return locales.map(locale => {
             const localePrefix = locale === defaultLocale ? '' : `/${locale}`;
             const href = `${siteUrl}${localePrefix}${pagePath || ''}`;
-            return `    <xhtml:link rel="alternate" hreflang="${locale}" href="${href}"/>`;
-        }).join('\n');
-
-        return `  <url>
-    <loc>${canonicalUrl}</loc>
+            return `  <url>
+    <loc>${href}</loc>
     <lastmod>${lastmod}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>${pagePath === '' ? '1.0' : '0.8'}</priority>
-${alternateLinks}
-    <xhtml:link rel="alternate" hreflang="x-default" href="${canonicalUrl}"/>
   </url>`;
+        });
     }).join('\n');
 
-    return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urlEntries}\n</urlset>`;
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urlEntries}
+</urlset>`;
 };
 
-const SitemapPage = () => null;
+
+const SitemapPage = () => {
+  // This component should be empty and return null
+  return null;
+};
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     const sitemap = generateSitemap();
 
-    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-    res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate'); // Cache for 24 hours
+    res.setHeader('Content-Type', 'text/xml');
+    // Cache for 24 hours
+    res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate');
     res.write(sitemap);
     res.end();
 

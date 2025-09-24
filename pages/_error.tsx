@@ -4,14 +4,17 @@ import Link from 'next/link';
 import { LanguageProvider, useLanguage } from '../contexts/LanguageContext';
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
 import { ServerIcon } from '../components/icons/ServerIcon';
+import fs from 'fs';
+import path from 'path';
+import process from 'process';
 
 // We need a minimal version of the LanguageProvider logic here since we can't use getStaticProps
-const loadTranslationForError = async (lang: string): Promise<Record<string, string>> => {
+const loadTranslationForError = (lang: string) => {
   try {
-    const translations = await import(`../locales/${lang}/common.json`);
-    return translations.default;
+    const filePath = path.join(process.cwd(), 'locales', lang, 'common.json');
+    const jsonContent = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(jsonContent);
   } catch (error) {
-    console.warn(`Could not load translation file for locale: ${lang}.`);
     return {};
   }
 };
@@ -87,13 +90,13 @@ const ErrorPage = ({ statusCode, translations, fallbackTranslations }: ErrorPage
 };
 
 
-ErrorPage.getInitialProps = async ({ res, err, locale }: NextPageContext) => {
+ErrorPage.getInitialProps = ({ res, err, locale }: NextPageContext) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
   const defaultLocale = 'en';
   const lang = locale || defaultLocale;
 
-  const translations = await loadTranslationForError(lang);
-  const fallbackTranslations = lang !== defaultLocale ? await loadTranslationForError(defaultLocale) : translations;
+  const translations = loadTranslationForError(lang);
+  const fallbackTranslations = lang !== defaultLocale ? loadTranslationForError(defaultLocale) : translations;
 
   return { statusCode, translations, fallbackTranslations };
 };

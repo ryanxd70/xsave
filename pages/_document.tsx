@@ -11,9 +11,11 @@ class MyDocument extends Document {
   render() {
     const favicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><style>path{fill:%233B82F6}@media (prefers-color-scheme:dark){path{fill:%2360A5FA}}</style><path d='M5 2L9 2L19 22L15 22Z'/><path d='M15 2L19 2L9 22L5 22Z'/></svg>";
 
-    // Fix: Destructuring `locale` from `this.props` was causing a TypeScript error.
-    // Using `this.props.locale` directly resolves the issue.
-    const { locale } = this.props;
+    // FIX: The `locale` property is available on `this.props`.
+    // To work around a TypeScript error where `props` is not recognized on the
+    // `MyDocument` subclass, we cast `this` to the base `Document` type, which
+    // is known to have a `props` property.
+    const locale = (this as Document).props.locale;
 
     return (
       <Html lang={locale || 'en'}>
