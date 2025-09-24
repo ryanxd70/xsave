@@ -26,12 +26,14 @@ jobs:
           key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
           port: 22 # Default SSH port is 22, change if you use a different one
           script: |
+            # Exit immediately if a command exits with a non-zero status.
+            set -e
+            
             # Navigate to the project directory
             cd ${{ secrets.PROJECT_PATH }}
 
             # Pull the latest changes from the main branch
             echo "🚚 Pulling latest changes..."
-            git checkout main
             git pull origin main
 
             # Install/update dependencies
@@ -42,10 +44,8 @@ jobs:
             echo "🛠️ Building the application..."
             npm run build
 
-            # Restart the application with PM2
-            echo "🚀 Restarting the application..."
-            # Note: Make sure 'xsave-nextjs' matches the name you gave your app in PM2.
-            # You can check it with 'pm2 list' on your VPS.
-            pm2 restart xsave-nextjs
+            # Use reload for zero-downtime. If the app is not running, start it.
+            echo "🚀 Reloading the application with PM2..."
+            pm2 reload xsave-nextjs || pm2 start npm --name "xsave-nextjs" -- start
 
             echo "✅ Deployment successful!"

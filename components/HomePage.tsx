@@ -26,11 +26,46 @@ const HomePage: React.FC = () => {
     setOpenFaqIndex(prevIndex => (prevIndex === index ? null : index));
   };
 
+  const fetchVideoData = useCallback(async (videoUrl: string) => {
+    setError(null);
+    if (!videoUrl) {
+      setError(t('error_enter_url'));
+      return;
+    }
+    setLoading(true);
+    setVideoData(null);
+
+    try {
+      const response = await fetch('/api/resolve', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url: videoUrl }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || t('error_bad_response'));
+      }
+      
+      setVideoData(data);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError(t('error_generic'));
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, [t]);
+
   const handlePaste = useCallback(async () => {
     try {
         const text = await navigator.clipboard.readText();
         setUrl(text);
-        // Focus the input to show the user the text has been pasted
         inputRef.current?.focus();
     } catch (err) {
         console.error('Failed to read clipboard contents: ', err);
@@ -53,40 +88,8 @@ const HomePage: React.FC = () => {
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
-    if (!url) {
-      setError(t('error_enter_url'));
-      return;
-    }
-    setLoading(true);
-    setVideoData(null);
-
-    try {
-      const response = await fetch('/api/resolve', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ url }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || t('error_bad_response'));
-      }
-      
-      setVideoData(data);
-    } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError(t('error_generic'));
-      }
-    } finally {
-      setLoading(false);
-    }
-  }, [url, t]);
+    fetchVideoData(url);
+  }, [url, fetchVideoData]);
 
   const FAQ_DATA = getFaqData(t);
 

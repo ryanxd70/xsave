@@ -10,6 +10,14 @@ const nextConfig = {
     defaultLocale: 'en',
     localeDetection: false,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
+    ]
+  },
   webpack: (config) => {
     // This addresses a known issue on Windows where the development server's
     // file watcher (watchpack) tries to access system files, causing errors.
