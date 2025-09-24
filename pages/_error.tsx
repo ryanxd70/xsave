@@ -4,20 +4,9 @@ import Link from 'next/link';
 import { LanguageProvider, useLanguage } from '../contexts/LanguageContext';
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
 import { ServerIcon } from '../components/icons/ServerIcon';
-import fs from 'fs';
-import path from 'path';
-import process from 'process';
 
-// We need a minimal version of the LanguageProvider logic here since we can't use getStaticProps
-const loadTranslationForError = (lang: string) => {
-  try {
-    const filePath = path.join(process.cwd(), 'locales', lang, 'common.json');
-    const jsonContent = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(jsonContent);
-  } catch (error) {
-    return {};
-  }
-};
+// Note: The 'fs', 'path', and 'process' modules were moved inside getInitialProps
+// to ensure they are only loaded on the server-side, preventing client-side bundle errors.
 
 interface ErrorPageProps {
   statusCode?: number;
@@ -91,6 +80,23 @@ const ErrorPage = ({ statusCode, translations, fallbackTranslations }: ErrorPage
 
 
 ErrorPage.getInitialProps = ({ res, err, locale }: NextPageContext) => {
+  // These modules are server-side only. By requiring them inside getInitialProps,
+  // we ensure they are not bundled in the client-side code.
+  const fs = require('fs');
+  const path = require('path');
+  const process = require('process');
+  
+  const loadTranslationForError = (lang: string) => {
+    try {
+      const filePath = path.join(process.cwd(), 'locales', lang, 'common.json');
+      const jsonContent = fs.readFileSync(filePath, 'utf8');
+      return JSON.parse(jsonContent);
+    } catch (error) {
+      console.warn(`Could not load translation file for locale: ${lang}.`);
+      return {};
+    }
+  };
+
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
   const defaultLocale = 'en';
   const lang = locale || defaultLocale;
