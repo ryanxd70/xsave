@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { languages } from '../../i18n-config';
+import type { GetServerSideProps } from 'next';
+import { languages } from '../i18n-config';
 
 const siteUrl = 'https://xsave.app';
 const pages = ['', '/about', '/privacy', '/disclaimer', '/contact'];
@@ -39,10 +39,22 @@ const generateSitemap = (): string => {
   return xml;
 };
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+// The page component is not rendered, as we write directly to the response.
+const Sitemap = () => null;
+
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const sitemap = generateSitemap();
 
-  res.setHeader('Content-Type', 'text/xml');
+  res.setHeader('Content-Type', 'application/xml');
+  // Add a cache control header for better performance and to signal to CDNs like Cloudflare how to handle this file.
+  res.setHeader('Cache-Control', 'public, s-maxage=600, stale-while-revalidate=60');
+  
   res.write(sitemap);
   res.end();
-}
+
+  return {
+    props: {},
+  };
+};
+
+export default Sitemap;
