@@ -1,51 +1,60 @@
-import type { GetServerSideProps } from 'next';
+import { GetServerSideProps } from 'next';
+import { languages } from '../i18n-config';
 
 const siteUrl = 'https://xsave.app';
-const locales = [
-  'en', 'id', 'vi', 'ms', 'jv', 'cs', 'es', 'fr', 'de', 'el',
-  'hu', 'it', 'nl', 'pl', 'pt', 'ro', 'th', 'tr', 'uk', 'ru',
-  'hi', 'ko', 'zh-CN', 'zh-TW', 'ja'
-];
-const defaultLocale = 'en';
-const staticPages = ['', '/about', '/privacy', '/disclaimer', '/contact'];
-const lastmod = new Date().toISOString().split('T')[0]; // Use current date
+const pages = ['', '/about', '/privacy', '/disclaimer', '/contact'];
+const locales = Object.keys(languages);
 
 const generateSitemap = (): string => {
-    const urlEntries = staticPages.flatMap(pagePath => {
-        return locales.map(locale => {
-            const localePrefix = locale === defaultLocale ? '' : `/${locale}`;
-            const href = `${siteUrl}${localePrefix}${pagePath || ''}`;
-            return `  <url>
-    <loc>${href}</loc>
-    <lastmod>${lastmod}</lastmod>
-  </url>`;
-        });
-    }).join('\n');
+  const lastmod = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
 
-    return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urlEntries}
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">`;
+
+  pages.forEach(page => {
+    locales.forEach(locale => {
+      const localePrefix = locale === 'en' ? '' : `/${locale}`;
+      const pageUrl = `${siteUrl}${localePrefix}${page}`;
+      
+      xml += `
+  <url>
+    <loc>${pageUrl}</loc>
+    <lastmod>${lastmod}</lastmod>`;
+
+      // Add all alternate language versions for this page
+      locales.forEach(alternateLocale => {
+        const alternateLocalePrefix = alternateLocale === 'en' ? '' : `/${alternateLocale}`;
+        const alternateUrl = `${siteUrl}${alternateLocalePrefix}${page}`;
+        xml += `
+    <xhtml:link rel="alternate" hreflang="${alternateLocale}" href="${alternateUrl}" />`;
+      });
+      
+      xml += `
+  </url>`;
+    });
+  });
+
+  xml += `
 </urlset>`;
+
+  return xml;
 };
 
-
 const SitemapPage = () => {
-  // This component should be empty and return null
+  // This component does not render anything.
   return null;
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-    const sitemap = generateSitemap();
+  const sitemap = generateSitemap();
 
-    res.setHeader('Content-Type', 'text/xml');
-    // Cache for 24 hours
-    res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate');
-    res.write(sitemap);
-    res.end();
+  res.setHeader('Content-Type', 'text/xml');
+  res.write(sitemap);
+  res.end();
 
-    return {
-        props: {},
-    };
+  return {
+    props: {},
+  };
 };
 
 export default SitemapPage;
