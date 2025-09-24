@@ -107,5 +107,11 @@
     "download_another_video": "Download Another Video",
     "not_found_title": "Page Not Found",
     "not_found_description": "Sorry, the page you are looking for does not exist or has been moved.",
-    "go_back_home": "Go Back Home"
+    "go_back_home": "Go Back Home",
+    "error_page_title_400": "Bad Request",
+    "error_page_description_400": "The server could not understand the request due to invalid syntax.",
+    "error_page_title_500": "Server Error",
+    "error_page_description_500": "We're experiencing some technical difficulties. Please try again later.",
+    "error_page_title_generic": "An Error Occurred",
+    "error_page_description_generic": "Something went wrong. Please try refreshing the page or come back later."
 }

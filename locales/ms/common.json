@@ -104,5 +104,11 @@
     "download_another_video": "Muat Turun Video Lain",
     "not_found_title": "Halaman Tidak Ditemui",
     "not_found_description": "Maaf, halaman yang anda cari tidak wujud atau telah dialihkan.",
-    "go_back_home": "Kembali ke Laman Utama"
+    "go_back_home": "Kembali ke Laman Utama",
+    "error_page_title_400": "Permintaan Tidak Sah",
+    "error_page_description_400": "Pelayan tidak dapat memahami permintaan kerana sintaks yang tidak sah.",
+    "error_page_title_500": "Ralat Pelayan",
+    "error_page_description_500": "Kami menghadapi beberapa masalah teknikal. Sila cuba lagi kemudian.",
+    "error_page_title_generic": "Ralat Berlaku",
+    "error_page_description_generic": "Sesuatu telah berlaku. Sila cuba muat semula halaman atau kembali kemudian."
 }

@@ -1,5 +1,5 @@
 // Fix: Use a type-only import for Next.js types to fix module resolution errors.
-import type { GetStaticProps } from 'next';
+import { GetStaticProps } from 'next';
 import path from 'path';
 import fs from 'fs';
 import process from 'process';

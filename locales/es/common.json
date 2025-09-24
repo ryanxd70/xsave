@@ -104,5 +104,11 @@
     "download_another_video": "Descargar otro video",
     "not_found_title": "Página no encontrada",
     "not_found_description": "Lo sentimos, la página que buscas no existe o ha sido movida.",
-    "go_back_home": "Volver al inicio"
+    "go_back_home": "Volver al inicio",
+    "error_page_title_400": "Solicitud incorrecta",
+    "error_page_description_400": "El servidor no pudo entender la solicitud debido a una sintaxis no válida.",
+    "error_page_title_500": "Error del servidor",
+    "error_page_description_500": "Estamos experimentando algunas dificultades técnicas. Por favor, inténtelo de nuevo más tarde.",
+    "error_page_title_generic": "Ocurrió un error",
+    "error_page_description_generic": "Algo salió mal. Por favor, intente refrescar la página o vuelva más tarde."
 }

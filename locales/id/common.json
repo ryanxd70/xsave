@@ -104,5 +104,11 @@
     "download_another_video": "Unduh Video Lain",
     "not_found_title": "Halaman Tidak Ditemukan",
     "not_found_description": "Maaf, halaman yang Anda cari tidak ada atau telah dipindahkan.",
-    "go_back_home": "Kembali ke Beranda"
+    "go_back_home": "Kembali ke Beranda",
+    "error_page_title_400": "Permintaan Buruk",
+    "error_page_description_400": "Server tidak dapat memahami permintaan karena sintaks yang tidak valid.",
+    "error_page_title_500": "Kesalahan Server",
+    "error_page_description_500": "Kami mengalami beberapa kesulitan teknis. Silakan coba lagi nanti.",
+    "error_page_title_generic": "Terjadi Kesalahan",
+    "error_page_description_generic": "Ada yang salah. Silakan coba segarkan halaman atau kembali lagi nanti."
 }

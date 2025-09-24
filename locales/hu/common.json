@@ -104,5 +104,11 @@
     "download_another_video": "Másik videó letöltése",
     "not_found_title": "Az oldal nem található",
     "not_found_description": "Sajnáljuk, a keresett oldal nem létezik vagy áthelyezték.",
-    "go_back_home": "Vissza a főoldalra"
+    "go_back_home": "Vissza a főoldalra",
+    "error_page_title_400": "Hibás kérés",
+    "error_page_description_400": "A szerver érvénytelen szintaxis miatt nem tudta megérteni a kérést.",
+    "error_page_title_500": "Szerverhiba",
+    "error_page_description_500": "Technikai problémákat tapasztalunk. Kérjük, próbálja újra később.",
+    "error_page_title_generic": "Hiba történt",
+    "error_page_description_generic": "Valami hiba történt. Kérjük, próbálja meg frissíteni az oldalt, vagy térjen vissza később."
 }

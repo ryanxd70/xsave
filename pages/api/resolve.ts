@@ -1,5 +1,5 @@
 // Fix: Use a type-only import for Next.js types to fix module resolution errors.
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
 import type { VideoData, Variant } from '../../types';
 import ytdlp from 'yt-dlp-exec';
 

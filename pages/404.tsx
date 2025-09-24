@@ -1,9 +1,9 @@
-
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { useLanguage } from '../contexts/LanguageContext';
 import { getStaticProps } from '../lib/translations';
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
+import { BrokenLinkIcon } from '../components/icons/BrokenLinkIcon';
 
 const NotFoundPage = () => {
     const { t } = useLanguage();
@@ -16,6 +16,7 @@ const NotFoundPage = () => {
                 nofollow={true}
             />
             <section className="text-center flex flex-col items-center justify-center animate-fade-in py-16">
+                <BrokenLinkIcon className="h-20 w-20 text-blue-500 mb-6" />
                 <h1 className="text-6xl md:text-8xl font-extrabold text-blue-600 dark:text-blue-500 mb-4">
                     404
                 </h1>

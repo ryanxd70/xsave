@@ -104,5 +104,11 @@
     "download_another_video": "Scarica un altro video",
     "not_found_title": "Pagina non trovata",
     "not_found_description": "Spiacenti, la pagina che stai cercando non esiste o è stata spostata.",
-    "go_back_home": "Torna alla Home"
+    "go_back_home": "Torna alla Home",
+    "error_page_title_400": "Richiesta non valida",
+    "error_page_description_400": "Il server non è riuscito a comprendere la richiesta a causa di una sintassi non valida.",
+    "error_page_title_500": "Errore del server",
+    "error_page_description_500": "Stiamo riscontrando alcune difficoltà tecniche. Riprova più tardi.",
+    "error_page_title_generic": "Si è verificato un errore",
+    "error_page_description_generic": "Qualcosa è andato storto. Prova a ricaricare la pagina o a tornare più tardi."
 }

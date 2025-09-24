@@ -72,7 +72,7 @@
     "privacy_log_files_title": "Fichiers journaux",
     "privacy_log_files_p1": "XSave suit une procédure standard d'utilisation des fichiers journaux. Ces fichiers enregistrent les visiteurs lorsqu'ils visitent des sites Web. Les informations collectées par les fichiers journaux incluent les adresses de protocole Internet (IP), le type de navigateur, l'horodatage et les pages de renvoi/sortie. Celles-ci ne sont liées à aucune information personnellement identifiable. Le but de ces informations est d'analyser les tendances, d'administrer le site et de recueillir des informations démographiques à usage interne pour améliorer notre service.",
     "privacy_cookies_title": "Cookies et balises Web",
-    "privacy_cookies_p1": "Comme tout autre site Web, XSave utilise des « cookies ». Ces cookies sont utilisés pour stocker des informations, y compris les préférences des visiteurs, telles que les paramètres de langue et de thème. Les informations sont utilisées pour optimiser l'expérience des utilisateurs en personnalisant le contenu de notre page Web en fonction du type de navigateur des visiteurs et/ou d'autres informations.",
+    "privacy_cookies_p1": "Comme tout autre site Web, XSave utilise des « cookies ». Ces cookies sont utilisés pour stocker des informations, y compris les préférences des visitors, telles que les paramètres de langue et de thème. Les informations sont utilisées pour optimiser l'expérience des utilisateurs en personnalisant le contenu de notre page Web en fonction du type de navigateur des visiteurs et/ou d'autres informations.",
     "privacy_third_party_title": "Services tiers",
     "privacy_third_party_p1": "Nous n'utilisons aucun service tiers qui collecterait des données personnelles de nos utilisateurs. Nous pouvons utiliser des services d'analyse qui agrègent des données d'utilisation anonymes.",
     "privacy_your_rights_title": "Vos droits en matière de protection des données",
@@ -107,5 +107,11 @@
     "download_another_video": "Télécharger une autre vidéo",
     "not_found_title": "Page non trouvée",
     "not_found_description": "Désolé, la page que vous recherchez n'existe pas ou a été déplacée.",
-    "go_back_home": "Retour à l'accueil"
+    "go_back_home": "Retour à l'accueil",
+    "error_page_title_400": "Mauvaise requête",
+    "error_page_description_400": "Le serveur n'a pas pu comprendre la requête en raison d'une syntaxe invalide.",
+    "error_page_title_500": "Erreur de serveur",
+    "error_page_description_500": "Nous rencontrons des difficultés techniques. Veuillez réessayer plus tard.",
+    "error_page_title_generic": "Une erreur est survenue",
+    "error_page_description_generic": "Quelque chose s'est mal passé. Veuillez essayer de rafraîchir la page ou de revenir plus tard."
 }

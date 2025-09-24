@@ -104,5 +104,11 @@
     "download_another_video": "Unduh Video Liyane",
     "not_found_title": "Kaca Ora Ditemokake",
     "not_found_description": "Nyuwun sewu, kaca sing sampeyan goleki ora ana utawa wis dipindhah.",
-    "go_back_home": "Bali menyang Omah"
+    "go_back_home": "Bali menyang Omah",
+    "error_page_title_400": "Panjalukan Ala",
+    "error_page_description_400": "Server ora bisa mangerteni panjalukan amarga sintaks sing ora sah.",
+    "error_page_title_500": "Kesalahan Server",
+    "error_page_description_500": "Kita ngalami sawetara kangelan teknis. Coba maneh mengko.",
+    "error_page_title_generic": "Ana Kesalahan",
+    "error_page_description_generic": "Ana sing salah. Coba segerake kaca utawa bali maneh mengko."
 }

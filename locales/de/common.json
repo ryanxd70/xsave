@@ -107,5 +107,11 @@
     "download_another_video": "Weiteres Video herunterladen",
     "not_found_title": "Seite nicht gefunden",
     "not_found_description": "Entschuldigung, die von Ihnen gesuchte Seite existiert nicht oder wurde verschoben.",
-    "go_back_home": "Zurück zur Startseite"
+    "go_back_home": "Zurück zur Startseite",
+    "error_page_title_400": "Ungültige Anfrage",
+    "error_page_description_400": "Der Server konnte die Anfrage aufgrund ungültiger Syntax nicht verstehen.",
+    "error_page_title_500": "Serverfehler",
+    "error_page_description_500": "Wir haben technische Schwierigkeiten. Bitte versuchen Sie es später erneut.",
+    "error_page_title_generic": "Ein Fehler ist aufgetreten",
+    "error_page_description_generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie, die Seite neu zu laden oder später zurückzukommen."
 }

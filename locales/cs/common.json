@@ -85,7 +85,7 @@
     "disclaimer_external_links_title": "Vyloučení odpovědnosti za externí odkazy",
     "disclaimer_external_links_p1": "Stránky mohou obsahovat odkazy na jiné webové stránky nebo obsah patřící třetím stranám nebo z nich pocházející. Takové externí odkazy nejsou námi prošetřovány, monitorovány ani kontrolovány z hlediska přesnosti, přiměřenosti, platnosti, spolehlivosti, dostupnosti nebo úplnosti.",
     "disclaimer_personal_responsibility_title": "Osobní odpovědnost",
-    "disclaimer_personal_responsibility_p1": "Jste výhradně odpovědní za jakýkoli obsah, který si stáhnete prostřednictvím naší služby. Je vaší odpovědností zajistit, abyste neporušovali žádné autorské zákony ani podmínky služby Twitter/X. XSave nenese odpovědnost za jakékoli zneužití této služby.",
+    "disclaimer_personal_responsibility_p1": "Jste výhradně odpovědní za jakýkoli obsah, který si stáhnete prostřednictvím naší služby. Je vaší odpovědností zajistit, abyste neporušovali žádné autorské zákony ani podmínky služby Twitteru/X. XSave nenese odpovědnost za jakékoli zneužití této služby.",
     "disclaimer_no_affiliation_title": "Žádné spojení",
     "disclaimer_no_affiliation_p1": "XSave je nezávislý projekt a není přidružen, spojen, autorizován, podporován ani žádným způsobem oficiálně spojen s X Corp (dříve Twitter, Inc.) ani s žádnou z jejích dceřiných společností nebo přidružených společností.",
     "contact_title": "Kontaktujte nás",
@@ -107,5 +107,11 @@
     "download_another_video": "Stáhnout další video",
     "not_found_title": "Stránka nenalezena",
     "not_found_description": "Omlouváme se, stránka, kterou hledáte, neexistuje nebo byla přesunuta.",
-    "go_back_home": "Zpět na domovskou stránku"
+    "go_back_home": "Zpět na domovskou stránku",
+    "error_page_title_400": "Špatný požadavek",
+    "error_page_description_400": "Server nemohl porozumět požadavku kvůli neplatné syntaxi.",
+    "error_page_title_500": "Chyba serveru",
+    "error_page_description_500": "Vyskytly se technické potíže. Zkuste to prosím později.",
+    "error_page_title_generic": "Došlo k chybě",
+    "error_page_description_generic": "Něco se pokazilo. Zkuste prosím obnovit stránku nebo se vrátit později."
 }
