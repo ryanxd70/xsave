@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { languages } from '../../i18n-config';
+import { languages } from '../../../i18n-config';
 
 const siteUrl = 'https://xsave.app';
 const pages = ['', '/about', '/privacy', '/disclaimer', '/contact'];
