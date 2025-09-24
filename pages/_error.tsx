@@ -5,8 +5,36 @@ import { LanguageProvider, useLanguage } from '../contexts/LanguageContext';
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
 import { ServerIcon } from '../components/icons/ServerIcon';
 
-// Note: The 'fs', 'path', and 'process' modules were moved inside getInitialProps
-// to ensure they are only loaded on the server-side, preventing client-side bundle errors.
+// Import all translation files directly to avoid server-side fs access in getInitialProps
+import en from '../locales/en/common.json';
+import id from '../locales/id/common.json';
+import vi from '../locales/vi/common.json';
+import ms from '../locales/ms/common.json';
+import jv from '../locales/jv/common.json';
+import cs from '../locales/cs/common.json';
+import es from '../locales/es/common.json';
+import fr from '../locales/fr/common.json';
+import de from '../locales/de/common.json';
+import el from '../locales/el/common.json';
+import hu from '../locales/hu/common.json';
+import it from '../locales/it/common.json';
+import nl from '../locales/nl/common.json';
+import pl from '../locales/pl/common.json';
+import pt from '../locales/pt/common.json';
+import ro from '../locales/ro/common.json';
+import th from '../locales/th/common.json';
+import tr from '../locales/tr/common.json';
+import uk from '../locales/uk/common.json';
+import ru from '../locales/ru/common.json';
+import hi from '../locales/hi/common.json';
+import ko from '../locales/ko/common.json';
+import zhCN from '../locales/zh-CN/common.json';
+import zhTW from '../locales/zh-TW/common.json';
+import ja from '../locales/ja/common.json';
+
+const allTranslations: Record<string, Record<string, string>> = {
+  en, id, vi, ms, jv, cs, es, fr, de, el, hu, it, nl, pl, pt, ro, th, tr, uk, ru, hi, ko, 'zh-CN': zhCN, 'zh-TW': zhTW, ja
+};
 
 interface ErrorPageProps {
   statusCode?: number;
@@ -80,29 +108,12 @@ const ErrorPage = ({ statusCode, translations, fallbackTranslations }: ErrorPage
 
 
 ErrorPage.getInitialProps = ({ res, err, locale }: NextPageContext) => {
-  // These modules are server-side only. By requiring them inside getInitialProps,
-  // we ensure they are not bundled in the client-side code.
-  const fs = require('fs');
-  const path = require('path');
-  const process = require('process');
-  
-  const loadTranslationForError = (lang: string) => {
-    try {
-      const filePath = path.join(process.cwd(), 'locales', lang, 'common.json');
-      const jsonContent = fs.readFileSync(filePath, 'utf8');
-      return JSON.parse(jsonContent);
-    } catch (error) {
-      console.warn(`Could not load translation file for locale: ${lang}.`);
-      return {};
-    }
-  };
-
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
   const defaultLocale = 'en';
   const lang = locale || defaultLocale;
 
-  const translations = loadTranslationForError(lang);
-  const fallbackTranslations = lang !== defaultLocale ? loadTranslationForError(defaultLocale) : translations;
+  const translations = allTranslations[lang] || allTranslations[defaultLocale];
+  const fallbackTranslations = allTranslations[defaultLocale];
 
   return { statusCode, translations, fallbackTranslations };
 };
