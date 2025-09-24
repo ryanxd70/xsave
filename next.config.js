@@ -13,16 +13,21 @@ const nextConfig = {
   webpack: (config) => {
     // This addresses a known issue on Windows where the development server's
     // file watcher (watchpack) tries to access system files, causing errors.
-    // By ignoring these specific files, we prevent the errors and improve
-    // the stability of the development environment.
-    const ignored = [
-      ...(Array.isArray(config.watchOptions.ignored) ? config.watchOptions.ignored : []),
-      /hiberfil\.sys/,
-      /pagefile\.sys/,
-      /swapfile\.sys/,
-      /DumpStack\.log\.tmp/,
-    ];
-    config.watchOptions.ignored = ignored;
+    // By replacing the default ignored configuration with an array of glob
+    // patterns, we ensure schema compliance and prevent crashes.
+    config.watchOptions = {
+      ...config.watchOptions,
+      poll: 1000, // Use polling for better compatibility in some environments.
+      ignored: [
+        '**/.git/**',
+        '**/node_modules/**',
+        '**/.next/**',
+        '**/hiberfil.sys',
+        '**/pagefile.sys',
+        '**/swapfile.sys',
+        '**/DumpStack.log.tmp',
+      ],
+    };
     return config;
   },
 };
