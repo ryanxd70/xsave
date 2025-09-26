@@ -31,19 +31,24 @@ function getGitLastModified(filePath: string): string {
   }
 }
 
+// Ensure proper URL formatting (root gets "/", others don’t)
+function formatUrl(page: string, locale?: string): string {
+  if (!page) {
+    return locale ? `${baseUrl}/${locale}/` : `${baseUrl}/`;
+  }
+  return locale ? `${baseUrl}/${locale}/${page}` : `${baseUrl}/${page}`;
+}
+
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const sitemapUrls: SitemapUrl[] = [];
 
   pages.forEach((page) => {
-    const pagePath = page ? `/${page}` : "";
-    const filePath = path.join(process.cwd(), "pages", `${page || "index"}.tsx`);
-
     // Default English page
-    sitemapUrls.push({ loc: `${baseUrl}${pagePath}`, page });
+    sitemapUrls.push({ loc: formatUrl(page), page });
 
     // Localized pages
     locales.forEach((locale) => {
-      sitemapUrls.push({ loc: `${baseUrl}/${locale}${pagePath}`, page, locale });
+      sitemapUrls.push({ loc: formatUrl(page, locale), page, locale });
     });
   });
 
@@ -64,7 +69,7 @@ ${sitemapUrls
       const hreflangs = locales
         .map(
           (locale) =>
-            `<xhtml:link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}${urlObj.page ? `/${urlObj.page}` : ""}" />`
+            `<xhtml:link rel="alternate" hreflang="${locale}" href="${formatUrl(urlObj.page, locale)}" />`
         )
         .join("\n  ");
 
