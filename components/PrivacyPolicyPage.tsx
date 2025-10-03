@@ -14,7 +14,7 @@ const PrivacyPolicyPageContent: React.FC = () => {
   return (
     <section id="privacy-policy" className="text-left max-w-5xl mx-auto animate-fade-in">
       <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6">
-        {t('privacy_title')}
+        {t('privacy_heading')}
       </h1>
       <div className="content-links space-y-8 text-gray-900 dark:text-gray-300 text-base">
         <p>{t('privacy_intro')}</p>

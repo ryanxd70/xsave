@@ -1,12 +1,12 @@
 import { DefaultSeoProps } from 'next-seo';
 
-const title = 'X Save: Twitter Video Downloader HD | X to MP4 Converter';
+const title = 'XSave: Twitter Video Downloader HD | X to MP4 Converter';
 const description = 'Download any Twitter/X video in HD with XSave. Fast, safe, and free X to MP4 converter — works on all devices.';
 const url = 'https://xsave.app';
 const imageUrl = 'https://images.pexels.com/photos/1660995/pexels-photo-1660995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
 
 const seoConfig: DefaultSeoProps = {
-  titleTemplate: '%s - XSave',
+  titleTemplate: '%s',
   defaultTitle: title,
   description,
   canonical: url,

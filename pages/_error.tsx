@@ -70,7 +70,7 @@ const ErrorContent = ({ statusCode }: { statusCode?: number }) => {
     return (
         <>
             <NextSeo
-                title={`${statusCode || 'Error'} - ${title} - XSave`}
+                title={`${statusCode || 'Error'} - ${title}`}
                 noindex={true}
                 nofollow={true}
             />

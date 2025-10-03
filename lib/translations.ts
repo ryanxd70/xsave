@@ -2,7 +2,6 @@
 import { GetStaticProps } from 'next';
 import path from 'path';
 import fs from 'fs';
-import process from 'process';
 
 /**
  * Loads translation JSON file for a given locale.
@@ -11,6 +10,7 @@ import process from 'process';
  */
 const loadTranslation = (lang: string) => {
   try {
+    // Fix: `process.cwd` is a function and must be called as `process.cwd()`.
     const filePath = path.join(process.cwd(), 'locales', lang, 'common.json');
     const jsonContent = fs.readFileSync(filePath, 'utf8');
     return JSON.parse(jsonContent);

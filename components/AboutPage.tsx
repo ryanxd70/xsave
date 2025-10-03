@@ -7,7 +7,7 @@ const AboutPageContent: React.FC = () => {
   return (
     <section id="about" className="text-left max-w-5xl mx-auto animate-fade-in">
       <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6">
-        {t('about_title')}
+        {t('about_heading')}
       </h1>
       <div className="content-links space-y-8 text-gray-900 dark:text-gray-300 text-base">
         <div className="space-y-4">

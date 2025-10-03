@@ -1,3 +1,4 @@
+
 import type { Page } from './types';
 
 type TFunction = (key: string) => string;
@@ -48,19 +49,19 @@ export const getPageMetadata = (t: TFunction): Record<Page, { title: string; des
     description: t('paste_url_prompt'),
   },
   about: {
-    title: `${t('about_title')} - XSave`,
+    title: t('about'),
     description: t('about_p1'),
   },
   privacy: {
-    title: `${t('privacy_policy')} - XSave`,
+    title: t('privacy_policy'),
     description: t('privacy_intro'),
   },
   disclaimer: {
-    title: `${t('disclaimer_page_title')} - XSave`,
+    title: t('disclaimer_page_title'),
     description: t('disclaimer_intro'),
   },
   contact: {
-    title: `${t('contact_title')} - XSave`,
+    title: t('contact_us'),
     description: t('contact_intro'),
   },
 });

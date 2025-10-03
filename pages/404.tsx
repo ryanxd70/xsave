@@ -11,7 +11,7 @@ const NotFoundPage = () => {
     return (
         <>
             <NextSeo
-                title={`${t('not_found_title')} - XSave`}
+                title={t('not_found_title')}
                 noindex={true}
                 nofollow={true}
             />

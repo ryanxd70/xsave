@@ -16,6 +16,7 @@ const DisclaimerPage = () => {
 
     const canonicalUrl = `${siteUrl}${locale === 'en' ? '' : `/${locale}`}${pagePath}`;
     const breadcrumbSchema = getBreadcrumbSchema('disclaimer', t, siteUrl, locale);
+    const shouldNoIndex = locale !== 'en';
 
     return (
         <>
@@ -23,6 +24,8 @@ const DisclaimerPage = () => {
                 title={metadata.title}
                 description={metadata.description}
                 canonical={canonicalUrl}
+                noindex={shouldNoIndex}
+                nofollow={shouldNoIndex ? false : undefined}
                 openGraph={{
                     url: canonicalUrl,
                     title: metadata.title,
