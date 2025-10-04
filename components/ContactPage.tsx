@@ -45,7 +45,7 @@ const ContactPageContent: React.FC = () => {
   return (
     <section id="contact" className="text-left max-w-3xl mx-auto animate-fade-in">
       <h1 className="text-3xl md:text-4xl font-extrabold text-center text-gray-900 dark:text-white mb-4">
-        {t('contact_title')}
+        {t('contact_us')}
       </h1>
       <p className="text-center text-base text-gray-900 dark:text-gray-300 mb-12">
         {t('contact_intro')}

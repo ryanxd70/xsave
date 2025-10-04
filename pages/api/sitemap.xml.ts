@@ -36,7 +36,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   pages.forEach(page => {
     // The file path is always based on the page component file.
     const pageFileName = page === '' ? 'index.tsx' : `${page.slice(1)}.tsx`;
-    // Fix: `process.cwd` is a function and must be called as `process.cwd()`.
+    // FIX: `process.cwd` is a function and must be called as `process.cwd()`.
     const filePath = path.join(process.cwd(), 'pages', pageFileName);
     const lastmod = getGitLastModified(filePath);
 
