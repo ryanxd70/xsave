@@ -1,14 +1,55 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  --aspect-16-9: 16 / 9;
+}
+
+/* Base styles */
+body {
+  @apply antialiased selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-blue-900/40 dark:selection:text-blue-100;
+}
 
 /* Hide the Vercel Toolbar on preview deployments */
 vercel-toolbar {
   display: none;
 }
 
-@layer components {
-  .content-links a {
-    @apply text-blue-600 dark:text-blue-400 hover:underline;
-  }
+.content-links a {
+  @apply text-blue-600 dark:text-blue-400 hover:underline;
+}
+
+/* Blog Content Styling */
+.blog-content h1 { @apply text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-white; }
+.blog-content h2 { @apply text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white; }
+.blog-content h3 { @apply text-xl font-bold mt-6 mb-3 text-gray-900 dark:text-white; }
+.blog-content p { @apply my-4 leading-relaxed text-gray-700 dark:text-gray-300; }
+.blog-content ul { @apply list-disc list-inside my-4 space-y-2 text-gray-700 dark:text-gray-300; }
+.blog-content ol { @apply list-decimal list-inside my-4 space-y-2 text-gray-700 dark:text-gray-300; }
+.blog-content a { @apply text-blue-600 dark:text-blue-400 hover:underline; }
+.blog-content img { @apply rounded-2xl my-8 shadow-lg; }
+.blog-content blockquote { @apply border-l-4 border-blue-500 pl-4 italic my-6 text-gray-600 dark:text-gray-400; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-800 rounded-full hover:bg-gray-400 dark:hover:bg-gray-700 transition-colors;
 }

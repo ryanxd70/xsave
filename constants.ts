@@ -109,3 +109,48 @@ export const getBreadcrumbSchema = (page: Page, t: TFunction, siteUrl: string, l
         ]
     };
 };
+
+export const getAboutPageSchema = (t: TFunction, url: string) => ({
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": t('about'),
+  "description": t('about_p1'),
+  "url": url,
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "XSave",
+    "url": "https://xsave.app",
+    "logo": "https://xsave.app/favicon.svg"
+  }
+});
+
+export const getContactPageSchema = (t: TFunction, url: string) => ({
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": t('contact_us'),
+  "description": t('contact_intro'),
+  "url": url,
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "XSave",
+    "url": "https://xsave.app",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "support@xsave.app",
+      "url": "https://xsave.app/contact"
+    }
+  }
+});
+
+export const getPrivacyPageSchema = (t: TFunction, url: string) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": t('privacy_policy'),
+  "description": t('privacy_intro'),
+  "url": url,
+  "about": {
+    "@type": "Thing",
+    "name": "Privacy Policy"
+  }
+});

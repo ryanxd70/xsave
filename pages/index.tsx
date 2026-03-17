@@ -1,3 +1,4 @@
+
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -36,6 +37,7 @@ const HomePage = () => {
         <>
             <NextSeo
                 title={metadata.title}
+                titleTemplate="%s"
                 description={metadata.description}
                 canonical={canonicalUrl}
                 openGraph={{

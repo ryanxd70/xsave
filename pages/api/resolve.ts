@@ -1,7 +1,6 @@
 // Fix: Use a type-only import for Next.js types to fix module resolution errors.
 import { NextApiRequest, NextApiResponse } from 'next';
 import type { VideoData, Variant } from '../../types';
-import ytdlp from 'yt-dlp-exec';
 
 // Interfaces for stronger type checking of the yt-dlp JSON output
 interface YtdlpFormat {
@@ -35,6 +34,16 @@ export default async function handler(
     }
     
     try {
+        // Use require to avoid build-time errors when the package is missing in this environment
+        let ytdlp;
+        try {
+            // Use eval('require') to hide the dependency from Webpack's static analysis
+            const dynamicRequire = eval('require');
+            ytdlp = dynamicRequire('yt-dlp-exec');
+        } catch (e) {
+            throw new Error('yt-dlp-exec is not installed in this environment. Please install it on your local/VPS setup.');
+        }
+
         const videoInfo: YtdlpInfo = await ytdlp(url, {
             dumpSingleJson: true,
             noWarnings: true,

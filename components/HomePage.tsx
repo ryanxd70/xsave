@@ -10,6 +10,9 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { ClipboardIcon } from './icons/ClipboardIcon';
 import { CloseIcon } from './icons/CloseIcon';
 import { AlertTriangleIcon } from './icons/AlertTriangleIcon';
+import { motion, AnimatePresence } from 'motion/react';
+
+import Image from 'next/image';
 
 const HomePage: React.FC = () => {
   const [url, setUrl] = useState<string>('');
@@ -94,46 +97,59 @@ const HomePage: React.FC = () => {
   const FAQ_DATA = getFaqData(t);
 
   return (
-    <>
-      <section id="home" className="text-center">
-        <div>
-          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
+    <div className="space-y-16">
+      <motion.section 
+        id="home" 
+        className="text-center relative pt-2 pb-4 md:pt-4 md:pb-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_70%)]"></div>
+        
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight font-display">
             {t('twitter_video_downloader')}
           </h1>
-          <p className="mt-6 text-base md:text-lg text-gray-900 dark:text-gray-300">
+          <p className="mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
             {t('paste_url_prompt')}
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} ref={formRef} className="mt-12 max-w-3xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-center gap-2 bg-white dark:bg-gray-900/50 p-2 rounded-full border border-gray-200 dark:border-gray-700 focus-within:ring-4 focus-within:ring-blue-500/50 dark:focus-within:ring-blue-400/30 transition-shadow shadow-lg">
+        <form onSubmit={handleSubmit} ref={formRef} className="mt-12 max-w-3xl mx-auto px-4">
+          <div className="flex flex-col sm:flex-row items-center gap-3 bg-white dark:bg-gray-900 p-2 rounded-2xl border border-gray-200 dark:border-gray-800 focus-within:ring-4 focus-within:ring-blue-500/10 dark:focus-within:ring-blue-400/10 transition-all shadow-xl dark:shadow-2xl dark:shadow-blue-900/10">
             <div className="w-full flex items-center pl-4 relative">
-              <LogoIcon className="h-6 w-6 text-gray-400 dark:text-gray-500 flex-shrink-0" />
+              <LogoIcon className="h-6 w-6 text-blue-500 flex-shrink-0" />
               <input
                 ref={inputRef}
                 type="url"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder={t('enter_url_placeholder')}
-                className="w-full p-3 bg-transparent focus:outline-none text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                className="w-full p-4 bg-transparent focus:outline-none text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-lg"
                 aria-label="Twitter/X URL"
                 aria-invalid={!!error}
                 aria-describedby={error ? errorId : undefined}
               />
-              {url && (
-                <button 
-                  type="button" 
-                  onClick={handleClearInput}
-                  className="p-1 rounded-full text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400"
-                  aria-label={t('clear_input')}
-                >
-                  <CloseIcon className="h-4 w-4"/>
-                </button>
-              )}
+              <AnimatePresence>
+                {url && (
+                  <motion.button 
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    type="button" 
+                    onClick={handleClearInput}
+                    className="p-2 rounded-full text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer transition-colors"
+                    aria-label={t('clear_input')}
+                  >
+                    <CloseIcon className="h-4 w-4"/>
+                  </motion.button>
+                )}
+              </AnimatePresence>
                <button 
                 type="button" 
                 onClick={handlePaste}
-                className="p-1 rounded-full text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 ml-1"
+                className="p-2 rounded-full text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 ml-1 cursor-pointer transition-colors"
                 aria-label={t('paste_from_clipboard')}
               >
                 <ClipboardIcon className="h-5 w-5"/>
@@ -142,10 +158,10 @@ const HomePage: React.FC = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full sm:w-auto flex-shrink-0 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500/50 dark:focus:ring-blue-400/30"
+              className="w-full sm:w-auto flex-shrink-0 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 focus:outline-none focus:ring-4 focus:ring-blue-500/50 cursor-pointer active:scale-95"
             >
               {loading ? (
-                <svg className="animate-spin h-5 w-5 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin h-6 w-6 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
@@ -154,37 +170,58 @@ const HomePage: React.FC = () => {
           </div>
         </form>
 
-        <div className="mt-4 min-h-[80px]">
-          {error && (
-            <div id={errorId} className="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-300 px-4 py-3 rounded-lg flex items-center gap-3" role="alert">
-              <AlertTriangleIcon className="h-6 w-6 text-red-500 flex-shrink-0" />
-              <div>
-                <strong className="font-bold">{t('oops')}</strong>
-                <span className="block sm:inline sm:ml-2">{error}</span>
-              </div>
-            </div>
-          )}
-           <div className="mt-4 flex flex-col items-center gap-4 animate-fade-in">
+        <div className="mt-8 min-h-[100px] max-w-3xl mx-auto px-4">
+          <AnimatePresence mode="wait">
+            {error && (
+              <motion.div 
+                key="error"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                id={errorId} 
+                className="bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30 text-red-700 dark:text-red-400 px-6 py-4 rounded-2xl flex items-center gap-4 shadow-sm" 
+                role="alert"
+              >
+                <div className="bg-red-100 dark:bg-red-900/40 p-2 rounded-full">
+                  <AlertTriangleIcon className="h-5 w-5 text-red-600 dark:text-red-500 flex-shrink-0" />
+                </div>
+                <div className="text-left">
+                  <strong className="font-bold block">{t('oops')}</strong>
+                  <span className="text-sm opacity-90">{error}</span>
+                </div>
+              </motion.div>
+            )}
+            
             {videoData && (
-              <>
+              <motion.div 
+                key="video"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex flex-col items-center gap-6"
+              >
                 <VideoCard videoData={videoData} />
                 <button
                   onClick={resetState}
-                  className="w-full sm:w-auto flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500/50 dark:focus:ring-blue-400/30 mt-4"
+                  className="w-full sm:w-auto bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-500/20 cursor-pointer"
                 >
                   {t('download_another_video')}
                 </button>
-              </>
+              </motion.div>
             )}
-          </div>
+          </AnimatePresence>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="mt-12 text-left bg-gray-100 dark:bg-gray-900 p-8 md:p-12 rounded-2xl border border-gray-200 dark:border-gray-800">
-        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">
+      <motion.section 
+        className="text-left max-w-4xl mx-auto px-4"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8 font-display">
           {t('xsave_title')}
         </h2>
-        <div className="content-links space-y-6 text-base text-gray-900 dark:text-gray-300">
+        <div className="space-y-6 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
            <p>
               {t('xsave_description_1')}
            </p>
@@ -192,40 +229,137 @@ const HomePage: React.FC = () => {
               {t('xsave_description_2')}
            </p>
         </div>
-      </section>
+      </motion.section>
       
-      <section id="how-to" className="mt-16 text-left bg-gray-100 dark:bg-gray-900 p-8 md:p-12 rounded-2xl border border-gray-200 dark:border-gray-800">
-        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white">
+      <motion.section 
+        id="how-to" 
+        className="text-left max-w-4xl mx-auto px-4"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12 font-display">
           {t('how_to_title')}
         </h2>
-        <div className="content-links mt-8 text-base text-gray-900 dark:text-gray-300">
-          <ol className="space-y-4 list-decimal list-inside">
-            <li>{t('how_to_step_1')}</li>
-            <li>{t('how_to_step_2')}</li>
-            <li>{t('how_to_step_3')}</li>
-            <li>{t('how_to_step_4')}</li>
-            <li>{t('how_to_step_5')}</li>
+        <div className="text-base text-gray-900 dark:text-gray-300">
+          <ol className="list-none space-y-12">
+            <li className="relative pl-16">
+              <span className="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-2xl bg-blue-600 text-white font-bold text-lg shadow-lg shadow-blue-500/30">1</span>
+              <p className="leading-relaxed text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_1')}</p>
+            </li>
+            
+            <li className="relative pl-16">
+              <span className="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-2xl bg-blue-600 text-white font-bold text-lg shadow-lg shadow-blue-500/30">2</span>
+              <div className="flex flex-col gap-10">
+                <p className="leading-relaxed text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_2')}</p>
+                <div className="relative w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-2xl bg-white dark:bg-gray-800">
+                  <div className="aspect-[2/1] relative">
+                    <Image 
+                      src="/images/tutorial-step-2.png" 
+                      alt="Selecting Copy Link from the Twitter share menu" 
+                      fill
+                      className="object-contain p-6"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li className="relative pl-16">
+              <span className="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-2xl bg-blue-600 text-white font-bold text-lg shadow-lg shadow-blue-500/30">3</span>
+              <div className="flex flex-col gap-10">
+                <p className="leading-relaxed text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_3')}</p>
+                <div className="relative w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-2xl bg-white dark:bg-gray-800">
+                  <div className="aspect-[4/1] relative">
+                    <Image 
+                      src="/images/xs2.png" 
+                      alt="Entering xsave.app in the browser address bar" 
+                      fill
+                      className="object-contain p-6"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li className="relative pl-16">
+              <span className="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-2xl bg-blue-600 text-white font-bold text-lg shadow-lg shadow-blue-500/30">4</span>
+              <div className="flex flex-col gap-10">
+                <p className="leading-relaxed text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_4')}</p>
+                <div className="relative w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-2xl bg-white dark:bg-gray-800">
+                  <div className="aspect-[4/1] relative">
+                    <Image 
+                      src="/images/xs3.png" 
+                      alt="Pasting the video URL into the XSave downloader" 
+                      fill
+                      className="object-contain p-6"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li className="relative pl-16">
+              <span className="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-2xl bg-blue-600 text-white font-bold text-lg shadow-lg shadow-blue-500/30">5</span>
+              <div className="flex flex-col gap-10">
+                <p className="leading-relaxed text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_5')}</p>
+                <div className="relative w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-2xl bg-white dark:bg-gray-800">
+                  <div className="aspect-[2/1] relative">
+                    <Image 
+                      src="/images/xs4.png" 
+                      alt="Choosing a video quality to download" 
+                      fill
+                      className="object-contain p-6"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
+              </div>
+            </li>
           </ol>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="features" className="mt-16 text-left bg-gray-100 dark:bg-gray-900 p-8 md:p-12 rounded-2xl border border-gray-200 dark:border-gray-800">
-        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">
+      <motion.section 
+        id="features" 
+        className="text-left max-w-4xl mx-auto px-4"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12 font-display">
           {t('features_title')}
         </h2>
-        <div className="content-links grid md:grid-cols-2 gap-8 text-base text-gray-900 dark:text-gray-300">
-          <p dangerouslySetInnerHTML={{ __html: t('feature_1') }} />
-          <p dangerouslySetInnerHTML={{ __html: t('feature_2') }} />
-          <p dangerouslySetInnerHTML={{ __html: t('feature_3') }} />
-          <p dangerouslySetInnerHTML={{ __html: t('feature_4') }} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base text-gray-900 dark:text-gray-300">
+          <div className="p-8 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-shadow">
+            <p className="text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: t('feature_1') }} />
+          </div>
+          <div className="p-8 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-shadow">
+            <p className="text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: t('feature_2') }} />
+          </div>
+          <div className="p-8 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-shadow">
+            <p className="text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: t('feature_3') }} />
+          </div>
+          <div className="p-8 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-shadow">
+            <p className="text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: t('feature_4') }} />
+          </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="faq" className="mt-16 bg-gray-100 dark:bg-gray-900 p-8 md:p-12 rounded-2xl border border-gray-200 dark:border-gray-800">
-        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white">
+      <motion.section 
+        id="faq" 
+        className="max-w-4xl mx-auto px-4 pb-20"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12 font-display">
           {t('faq_title')}
         </h2>
-        <div className="mt-8 space-y-4">
+        <div className="space-y-4">
           {FAQ_DATA.map((faq, index) => (
             <FAQItem
               key={index}
@@ -236,8 +370,8 @@ const HomePage: React.FC = () => {
             />
           ))}
         </div>
-      </section>
-    </>
+      </motion.section>
+    </div>
   );
 };
 

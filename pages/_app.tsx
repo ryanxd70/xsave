@@ -4,6 +4,19 @@ import { LanguageProvider } from '../contexts/LanguageContext';
 import Layout from '../components/Layout';
 import seoConfig from '../seo.config';
 import '../styles/globals.css';
+import { Inter, Outfit } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  display: 'swap',
+});
 
 type AppPropsWithTranslations = AppProps & {
   pageProps: {
@@ -19,9 +32,11 @@ function MyApp({ Component, pageProps }: AppPropsWithTranslations) {
       fallbackTranslations={pageProps.fallbackTranslations || {}}
     >
       <DefaultSeo {...seoConfig} />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <div className={`${inter.variable} ${outfit.variable} font-sans`}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </div>
     </LanguageProvider>
   );
 }

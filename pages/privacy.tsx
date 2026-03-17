@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PrivacyPolicyPageContent from '../components/PrivacyPolicyPage';
 import { useLanguage } from '../contexts/LanguageContext';
-import { getPageMetadata, getBreadcrumbSchema } from '../constants';
+import { getPageMetadata, getBreadcrumbSchema, getPrivacyPageSchema } from '../constants';
 import { languages } from '../i18n-config';
 import { getStaticProps } from '../lib/translations';
 
@@ -16,6 +16,7 @@ const PrivacyPage = () => {
 
     const canonicalUrl = `${siteUrl}${locale === 'en' ? '' : `/${locale}`}${pagePath}`;
     const breadcrumbSchema = getBreadcrumbSchema('privacy', t, siteUrl, locale);
+    const privacySchema = getPrivacyPageSchema(t, canonicalUrl);
     const shouldNoIndex = locale !== 'en';
 
     return (
@@ -36,15 +37,20 @@ const PrivacyPage = () => {
                     href: `${siteUrl}${lang === 'en' ? '' : `/${lang}`}${pagePath}`,
                 }))}
             />
-            {breadcrumbSchema && (
-                <Head>
+            <Head>
+                {breadcrumbSchema && (
                     <script
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
                         key="breadcrumb-jsonld"
                     />
-                </Head>
-            )}
+                )}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(privacySchema) }}
+                    key="privacy-jsonld"
+                />
+            </Head>
             <PrivacyPolicyPageContent />
         </>
     );

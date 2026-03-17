@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import AboutPageContent from '../components/AboutPage';
 import { useLanguage } from '../contexts/LanguageContext';
-import { getPageMetadata, getBreadcrumbSchema } from '../constants';
+import { getPageMetadata, getBreadcrumbSchema, getAboutPageSchema } from '../constants';
 import { languages } from '../i18n-config';
 import { getStaticProps } from '../lib/translations';
 
@@ -16,6 +16,7 @@ const AboutPage = () => {
     
     const canonicalUrl = `${siteUrl}${locale === 'en' ? '' : `/${locale}`}${pagePath}`;
     const breadcrumbSchema = getBreadcrumbSchema('about', t, siteUrl, locale);
+    const aboutSchema = getAboutPageSchema(t, canonicalUrl);
     const shouldNoIndex = locale !== 'en';
 
     return (
@@ -36,15 +37,20 @@ const AboutPage = () => {
                     href: `${siteUrl}${lang === 'en' ? '' : `/${lang}`}${pagePath}`,
                 }))}
             />
-            {breadcrumbSchema && (
-                <Head>
+            <Head>
+                {breadcrumbSchema && (
                     <script
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
                         key="breadcrumb-jsonld"
                     />
-                </Head>
-            )}
+                )}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+                    key="about-jsonld"
+                />
+            </Head>
             <AboutPageContent />
         </>
     );

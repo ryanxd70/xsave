@@ -33,7 +33,7 @@ const MoreDropdown: React.FC = () => {
     <div className="relative" ref={wrapperRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 text-gray-300 hover:text-white transition-colors text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white rounded-md p-1"
+        className="flex items-center gap-1 text-gray-300 hover:text-white transition-colors text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-1 cursor-pointer"
         aria-haspopup="true"
         aria-expanded={isOpen}
       >
@@ -43,17 +43,17 @@ const MoreDropdown: React.FC = () => {
 
       {isOpen && (
         <div
-          className="absolute right-0 mt-2 w-48 origin-top-right bg-white dark:bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+          className="absolute right-0 mt-2 w-56 origin-top-right bg-gray-900 border border-white/10 rounded-xl shadow-2xl focus:outline-none z-50 overflow-hidden"
           role="menu"
           aria-orientation="vertical"
         >
-          <div className="py-1">
+          <div className="py-2">
             {menuItems.map(item => (
                 <Link
                   key={item.page}
                   href={`/${item.page}`}
                   onClick={() => setIsOpen(false)}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="block w-full text-left px-5 py-3 text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors cursor-pointer font-medium"
                   role="menuitem"
                 >
                   <span className="flex items-center gap-2">

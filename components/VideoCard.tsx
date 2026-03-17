@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Image from 'next/image';
 import type { VideoData } from '../types';
 import { DownloadIcon } from './icons/DownloadIcon';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -13,18 +14,20 @@ const VideoCard: React.FC<VideoCardProps> = ({ videoData }) => {
 
   return (
     <div className="w-full max-w-3xl">
-        <div className="bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden">
-            <div className="relative aspect-video">
-                <img 
+        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-video group">
+                <Image 
                   src={videoData.thumbnail} 
                   alt="Video thumbnail" 
-                  className="absolute h-full w-full left-0 top-0 right-0 bottom-0 object-cover"
-                  loading="lazy"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  referrerPolicy="no-referrer"
                 />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
             </div>
-            <div className="p-6">
-                <p className="text-gray-900 dark:text-gray-200 text-left">{videoData.title}</p>
-                <div className="mt-6 flex flex-col items-center gap-3">
+            <div className="p-8">
+                <p className="text-gray-900 dark:text-gray-100 text-lg font-medium leading-relaxed text-left">{videoData.title}</p>
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {videoData.variants.map((variant) => (
                     <a
                       key={variant.quality}
@@ -32,12 +35,10 @@ const VideoCard: React.FC<VideoCardProps> = ({ videoData }) => {
                       download
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:w-96 inline-flex items-center justify-center gap-3 px-4 py-3 bg-gray-800 hover:bg-gray-900 text-white dark:bg-blue-600 dark:hover:bg-blue-700 rounded-lg transition-colors duration-200 group"
+                      className="inline-flex items-center justify-between gap-3 px-6 py-4 bg-gray-100 dark:bg-gray-800 hover:bg-blue-600 dark:hover:bg-blue-600 text-gray-900 dark:text-white hover:text-white dark:hover:text-white rounded-xl transition-all duration-300 group cursor-pointer border border-gray-200 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-600 shadow-sm hover:shadow-lg hover:shadow-blue-500/20"
                     >
-                        <div className="flex items-center gap-3">
-                            <DownloadIcon className="h-5 w-5 text-gray-400 dark:text-blue-200 flex-shrink-0" />
-                            <span className="font-medium text-sm text-left truncate">{variant.quality}</span>
-                        </div>
+                        <span className="font-bold text-sm tracking-wide">{variant.quality}</span>
+                        <DownloadIcon className="h-5 w-5 opacity-50 group-hover:opacity-100 transition-opacity" />
                     </a>
                 ))}
                 </div>

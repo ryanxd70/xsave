@@ -28,24 +28,24 @@ const LanguageSelector: React.FC = () => {
     <div className="relative" ref={wrapperRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 p-2 rounded-full bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white transition-colors"
+        className="flex items-center gap-2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all cursor-pointer"
         aria-haspopup="true"
         aria-expanded={isOpen}
         aria-label="Change language"
       >
-        <GlobeIcon className="h-5 w-5" />
-        <span className="text-sm font-medium uppercase">{language}</span>
-        <ChevronDownIcon className={`w-4 h-4 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        <GlobeIcon className="h-5 w-5 text-white" />
+        <span className="text-sm font-medium uppercase text-white">{language}</span>
+        <ChevronDownIcon className={`w-4 h-4 text-white transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {isOpen && (
         <div
-          className="absolute right-0 mt-2 w-56 max-h-80 overflow-y-auto origin-top-right bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+          className="absolute right-0 mt-2 w-72 max-h-96 overflow-y-auto origin-top-right bg-gray-900 border border-white/10 rounded-xl shadow-2xl focus:outline-none z-50 scrollbar-thin scrollbar-thumb-white/20"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"
         >
-            <div className="py-1 grid grid-cols-2 gap-1">
+            <div className="p-2 grid grid-cols-2 gap-1">
                 {(Object.keys(languages) as LanguageCode[]).map((langCode) => (
                     <Link
                         key={langCode}
@@ -53,11 +53,11 @@ const LanguageSelector: React.FC = () => {
                         locale={langCode}
                         prefetch={false}
                         onClick={() => setIsOpen(false)}
-                        className={`block w-full text-left px-4 py-2 text-sm ${
+                        className={`block w-full text-left px-4 py-3 text-xs font-medium rounded-lg transition-colors cursor-pointer ${
                         language === langCode
-                            ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
-                            : 'text-gray-700 dark:text-gray-300'
-                        } hover:bg-gray-100 dark:hover:bg-gray-700`}
+                            ? 'bg-blue-600 text-white'
+                            : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                        }`}
                         role="menuitem"
                     >
                         {languages[langCode].name}

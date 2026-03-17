@@ -9,8 +9,6 @@ class MyDocument extends Document {
   }
 
   render() {
-    const favicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><style>path{fill:%233B82F6}@media (prefers-color-scheme:dark){path{fill:%2360A5FA}}</style><path d='M5 2L9 2L19 22L15 22Z'/><path d='M15 2L19 2L9 22L5 22Z'/></svg>";
-
     // FIX: The `locale` property is available on `this.props`.
     // To work around a TypeScript error where `props` is not recognized on the
     // `MyDocument` subclass, we cast `this` to the base `Document` type, which
@@ -20,7 +18,8 @@ class MyDocument extends Document {
     return (
       <Html lang={locale || 'en'}>
         <Head>
-          <link rel="icon" href={favicon} />
+          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+          <link rel="shortcut icon" href="/favicon.svg" />
         </Head>
         <body>
           <Main />

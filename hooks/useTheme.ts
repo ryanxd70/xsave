@@ -20,13 +20,15 @@ export const useTheme = (): [Theme, () => void] => {
 
   useEffect(() => {
     // This effect synchronizes the theme state with the DOM and localStorage.
-    const root = window.document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
+    if (typeof window !== 'undefined') {
+      const root = window.document.documentElement;
+      if (theme === 'dark') {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+      window.localStorage.setItem('theme', theme);
     }
-    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = useCallback(() => {

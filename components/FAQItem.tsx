@@ -11,10 +11,10 @@ interface FAQItemProps {
 const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onToggle }) => {
 
   return (
-    <div className="border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800">
+    <div className="border border-gray-200 dark:border-gray-700 rounded-none bg-white dark:bg-gray-800">
       <button
         onClick={onToggle}
-        className="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 dark:text-gray-100"
+        className="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 dark:text-gray-100 cursor-pointer"
         aria-expanded={isOpen}
       >
         <span>{question}</span>

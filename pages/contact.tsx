@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ContactPageContent from '../components/ContactPage';
 import { useLanguage } from '../contexts/LanguageContext';
-import { getPageMetadata, getBreadcrumbSchema } from '../constants';
+import { getPageMetadata, getBreadcrumbSchema, getContactPageSchema } from '../constants';
 import { languages } from '../i18n-config';
 import { getStaticProps } from '../lib/translations';
 
@@ -16,6 +16,7 @@ const ContactPage = () => {
 
     const canonicalUrl = `${siteUrl}${locale === 'en' ? '' : `/${locale}`}${pagePath}`;
     const breadcrumbSchema = getBreadcrumbSchema('contact', t, siteUrl, locale);
+    const contactSchema = getContactPageSchema(t, canonicalUrl);
     const shouldNoIndex = locale !== 'en';
 
     return (
@@ -36,15 +37,20 @@ const ContactPage = () => {
                     href: `${siteUrl}${lang === 'en' ? '' : `/${lang}`}${pagePath}`,
                 }))}
             />
-            {breadcrumbSchema && (
-                <Head>
+            <Head>
+                {breadcrumbSchema && (
                     <script
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
                         key="breadcrumb-jsonld"
                     />
-                </Head>
-            )}
+                )}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+                    key="contact-jsonld"
+                />
+            </Head>
             <ContactPageContent />
         </>
     );
