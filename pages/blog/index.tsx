@@ -71,6 +71,10 @@ export const getStaticProps = async (context: any) => {
   const translationProps = await getTranslations(context);
   const posts = await getPosts();
 
+  if (!('props' in translationProps)) {
+    return translationProps;
+  }
+
   return {
     ...translationProps,
     props: {

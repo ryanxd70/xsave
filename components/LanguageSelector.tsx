@@ -40,7 +40,7 @@ const LanguageSelector: React.FC = () => {
 
       {isOpen && (
         <div
-          className="absolute right-0 mt-2 w-72 max-h-96 overflow-y-auto origin-top-right bg-gray-900 border border-white/10 rounded-xl shadow-2xl focus:outline-none z-50 scrollbar-thin scrollbar-thumb-white/20"
+          className="absolute right-[-80px] sm:right-0 mt-2 w-64 sm:w-72 max-h-96 overflow-y-auto origin-top-right bg-gray-900 border border-white/10 rounded-xl shadow-2xl focus:outline-none z-50 scrollbar-thin scrollbar-thumb-white/20"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"

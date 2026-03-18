@@ -55,10 +55,10 @@ const Header: React.FC = () => {
                     </Link>
                     <nav className="flex items-center gap-2 md:gap-4">
                         <div className="hidden md:flex items-center gap-8 mr-4">
-                            <Link href="/" className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide uppercase">{t('home')}</Link>
-                            <Link href="/#how-to" scroll={true} className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide uppercase">{t('how_to_use_nav')}</Link>
-                            <Link href="/#faq" scroll={true} className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide uppercase">{t('faq')}</Link>
-                            <Link href="/blog" className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide uppercase">{t('blog')}</Link>
+                            <Link href="/" className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide">{t('home')}</Link>
+                            <Link href="/#how-to" scroll={true} className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide">{t('how_to_use_nav')}</Link>
+                            <Link href="/#faq" scroll={true} className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide">{t('faq')}</Link>
+                            <Link href="/blog" className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide">{t('blog')}</Link>
                         </div>
                         <div className="hidden md:block">
                             <MoreDropdown />

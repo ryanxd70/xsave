@@ -91,6 +91,10 @@ export const getStaticProps = async (context: any) => {
     };
   }
 
+  if (!('props' in translationProps)) {
+    return translationProps;
+  }
+
   return {
     ...translationProps,
     props: {

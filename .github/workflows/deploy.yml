@@ -32,6 +32,19 @@ jobs:
             # Navigate to the project directory
             cd ${{ secrets.PROJECT_PATH }}
 
+            # Ensure Python is available (required by yt-dlp-exec)
+            echo "🐍 Checking for Python..."
+            if ! command -v python &> /dev/null; then
+              if command -v python3 &> /dev/null; then
+                echo "Python 3 found, linking to python..."
+                sudo ln -sf $(which python3) /usr/bin/python || echo "Could not create symlink, trying to install python-is-python3..."
+              fi
+              if ! command -v python &> /dev/null; then
+                echo "Installing python-is-python3..."
+                sudo apt-get update && sudo apt-get install -y python-is-python3 || echo "Failed to install python-is-python3. Please ensure Python is installed on your VPS."
+              fi
+            fi
+
             # Pull the latest changes from the main branch
             echo "🚚 Fetching and resetting to latest changes..."
             git fetch --all
@@ -39,7 +52,7 @@ jobs:
 
             # Install/update dependencies
             echo "📦 Installing dependencies..."
-            npm install
+            npm install --force
 
             # Build the Next.js application
             echo "🛠️ Building the application..."
