@@ -1,6 +1,36 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: 'standalone',
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'pbs.twimg.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.twimg.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'abs.twimg.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'video.twimg.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+        pathname: '/**',
+      }
+    ],
+  },
   i18n: {
     locales: [
       'en','id','vi','ms','jv','cs','es','fr','de','el',
@@ -18,6 +48,7 @@ const nextConfig = {
       },
     ];
   },
+  turbopack: {},
   webpack: (config) => {
     config.watchOptions = {
       ...config.watchOptions,
