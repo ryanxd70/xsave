@@ -48,6 +48,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  turbopack: {},
   webpack: (config) => {
     config.watchOptions = {
       ...config.watchOptions,
