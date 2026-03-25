@@ -202,7 +202,7 @@ const HomePage: React.FC = () => {
                 <VideoCard videoData={videoData} />
                 <button
                   onClick={resetState}
-                  className="w-full sm:w-auto bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-500/20 cursor-pointer"
+                  className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 focus:outline-none focus:ring-4 focus:ring-blue-500/50 cursor-pointer active:scale-95"
                 >
                   {t('download_another_video')}
                 </button>
@@ -242,23 +242,23 @@ const HomePage: React.FC = () => {
           {t('how_to_title')}
         </h2>
         <div className="text-base text-gray-900 dark:text-gray-300">
-          <ol className="list-none space-y-12">
-            <li className="relative pl-16">
-              <span className="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-2xl bg-blue-600 text-white font-bold text-lg shadow-lg shadow-blue-500/30">1</span>
-              <p className="leading-relaxed text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_1')}</p>
+          <ol className="list-none space-y-10 sm:space-y-12">
+            <li className="relative pl-12 sm:pl-16">
+              <span className="absolute left-0 top-0 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-blue-600 text-white font-bold text-base sm:text-lg shadow-lg shadow-blue-500/30">1</span>
+              <p className="leading-relaxed text-lg sm:text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_1')}</p>
             </li>
             
-            <li className="relative pl-16">
-              <span className="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-2xl bg-blue-600 text-white font-bold text-lg shadow-lg shadow-blue-500/30">2</span>
-              <div className="flex flex-col gap-10">
-                <p className="leading-relaxed text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_2')}</p>
+            <li className="relative pl-12 sm:pl-16">
+              <span className="absolute left-0 top-0 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-blue-600 text-white font-bold text-base sm:text-lg shadow-lg shadow-blue-500/30">2</span>
+              <div className="flex flex-col gap-6 sm:gap-10">
+                <p className="leading-relaxed text-lg sm:text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_2')}</p>
                 <div className="relative w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-2xl bg-white dark:bg-gray-800">
-                  <div className="aspect-[2/1] relative">
+                  <div className="aspect-[3/2] sm:aspect-[2/1] relative">
                     <Image 
                       src="/images/tutorial-step-2.png" 
                       alt="Selecting Copy Link from the Twitter share menu" 
                       fill
-                      className="object-contain p-6"
+                      className="object-contain p-4 md:p-6"
                       referrerPolicy="no-referrer"
                     />
                   </div>
@@ -266,17 +266,17 @@ const HomePage: React.FC = () => {
               </div>
             </li>
 
-            <li className="relative pl-16">
-              <span className="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-2xl bg-blue-600 text-white font-bold text-lg shadow-lg shadow-blue-500/30">3</span>
-              <div className="flex flex-col gap-10">
-                <p className="leading-relaxed text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_3')}</p>
+            <li className="relative pl-12 sm:pl-16">
+              <span className="absolute left-0 top-0 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-blue-600 text-white font-bold text-base sm:text-lg shadow-lg shadow-blue-500/30">3</span>
+              <div className="flex flex-col gap-6 sm:gap-10">
+                <p className="leading-relaxed text-lg sm:text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_3')}</p>
                 <div className="relative w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-2xl bg-white dark:bg-gray-800">
-                  <div className="aspect-[4/1] relative">
+                  <div className="aspect-[2/1] sm:aspect-[4/1] relative">
                     <Image 
                       src="/images/xs2.png" 
                       alt="Entering xsave.app in the browser address bar" 
                       fill
-                      className="object-contain p-6"
+                      className="object-contain p-4 md:p-6"
                       referrerPolicy="no-referrer"
                     />
                   </div>
@@ -284,17 +284,17 @@ const HomePage: React.FC = () => {
               </div>
             </li>
 
-            <li className="relative pl-16">
-              <span className="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-2xl bg-blue-600 text-white font-bold text-lg shadow-lg shadow-blue-500/30">4</span>
-              <div className="flex flex-col gap-10">
-                <p className="leading-relaxed text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_4')}</p>
+            <li className="relative pl-12 sm:pl-16">
+              <span className="absolute left-0 top-0 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-blue-600 text-white font-bold text-base sm:text-lg shadow-lg shadow-blue-500/30">4</span>
+              <div className="flex flex-col gap-6 sm:gap-10">
+                <p className="leading-relaxed text-lg sm:text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_4')}</p>
                 <div className="relative w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-2xl bg-white dark:bg-gray-800">
-                  <div className="aspect-[4/1] relative">
+                  <div className="aspect-[2/1] sm:aspect-[4/1] relative">
                     <Image 
                       src="/images/xs3.png" 
                       alt="Pasting the video URL into the XSave downloader" 
                       fill
-                      className="object-contain p-6"
+                      className="object-contain p-4 md:p-6"
                       referrerPolicy="no-referrer"
                     />
                   </div>
@@ -302,17 +302,17 @@ const HomePage: React.FC = () => {
               </div>
             </li>
 
-            <li className="relative pl-16">
-              <span className="absolute left-0 top-0 flex items-center justify-center w-10 h-10 rounded-2xl bg-blue-600 text-white font-bold text-lg shadow-lg shadow-blue-500/30">5</span>
-              <div className="flex flex-col gap-10">
-                <p className="leading-relaxed text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_5')}</p>
+            <li className="relative pl-12 sm:pl-16">
+              <span className="absolute left-0 top-0 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-blue-600 text-white font-bold text-base sm:text-lg shadow-lg shadow-blue-500/30">5</span>
+              <div className="flex flex-col gap-6 sm:gap-10">
+                <p className="leading-relaxed text-lg sm:text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_5')}</p>
                 <div className="relative w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-2xl bg-white dark:bg-gray-800">
-                  <div className="aspect-[2/1] relative">
+                  <div className="aspect-[3/2] sm:aspect-[2/1] relative">
                     <Image 
                       src="/images/xs4.png" 
                       alt="Choosing a video quality to download" 
                       fill
-                      className="object-contain p-6"
+                      className="object-contain p-4 md:p-6"
                       referrerPolicy="no-referrer"
                     />
                   </div>

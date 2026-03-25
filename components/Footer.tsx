@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-gray-900 dark:bg-gray-950 border-t border-white/5 dark:border-gray-800 text-gray-400">
-      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
           
           <div className="md:col-span-2 flex flex-col items-center md:items-start">
@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
 
         </div>
         
-        <div className="mt-16 pt-8 border-t border-white/5 text-center">
+        <div className="mt-10 pt-8 border-t border-white/5 text-center">
           <p className="text-sm font-medium text-gray-300">&copy; {new Date().getFullYear()} xsave.app. {t('all_rights_reserved')}</p>
           <p className="mt-4 text-xs opacity-40 leading-relaxed max-w-2xl mx-auto text-gray-400">{t('footer_disclaimer_short')}</p>
         </div>

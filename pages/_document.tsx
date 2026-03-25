@@ -19,6 +19,7 @@ class MyDocument extends Document {
       <Html lang={locale || 'en'}>
         <Head>
           <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+          <link rel="icon" href="/favicon.ico" sizes="any" />
           <link rel="shortcut icon" href="/favicon.svg" />
         </Head>
         <body>

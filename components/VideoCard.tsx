@@ -35,7 +35,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ videoData }) => {
                       download
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-between gap-3 px-6 py-4 bg-gray-100 dark:bg-gray-800 hover:bg-blue-600 dark:hover:bg-blue-600 text-gray-900 dark:text-white hover:text-white dark:hover:text-white rounded-xl transition-all duration-300 group cursor-pointer border border-gray-200 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-600 shadow-sm hover:shadow-lg hover:shadow-blue-500/20"
+                      className="inline-flex items-center justify-between gap-3 px-6 py-4 bg-gray-900 dark:bg-black hover:bg-blue-600 dark:hover:bg-blue-600 text-white rounded-xl transition-all duration-300 group cursor-pointer border border-gray-800 dark:border-gray-900 hover:border-blue-600 dark:hover:border-blue-600 shadow-sm hover:shadow-lg hover:shadow-blue-500/20"
                     >
                         <span className="font-bold text-sm tracking-wide">{variant.quality}</span>
                         <DownloadIcon className="h-5 w-5 opacity-50 group-hover:opacity-100 transition-opacity" />

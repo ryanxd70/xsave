@@ -2,7 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/privacy": "pages/privacy.js",
-  "/contact": "pages/contact.js",
-  "/disclaimer": "pages/disclaimer.js"
+  "/about": "pages/about.js",
+  "/": "pages/index.js",
+  "/blog": "pages/blog.js",
+  "/api/resolve": "pages/api/resolve.js"
 }

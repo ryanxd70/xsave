@@ -46,6 +46,10 @@ const nextConfig = {
         source: "/sitemap.xml",
         destination: "/api/sitemap.xml",
       },
+      {
+        source: "/favicon.ico",
+        destination: "/favicon.svg",
+      },
     ];
   },
   turbopack: {},
