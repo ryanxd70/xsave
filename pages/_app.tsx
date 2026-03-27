@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import Layout from '../components/Layout';
+import TopProgressBar from '../components/TopProgressBar';
 import seoConfig from '../seo.config';
 import '../styles/globals.css';
 import { Inter, Outfit } from 'next/font/google';
@@ -32,6 +33,7 @@ function MyApp({ Component, pageProps }: AppPropsWithTranslations) {
       fallbackTranslations={pageProps.fallbackTranslations || {}}
     >
       <DefaultSeo {...seoConfig} />
+      <TopProgressBar />
       <div className={`${inter.variable} ${outfit.variable} font-sans`}>
         <Layout>
           <Component {...pageProps} />

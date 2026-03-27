@@ -2,8 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/about": "pages/about.js",
   "/": "pages/index.js",
+  "/about": "pages/about.js",
+  "/disclaimer": "pages/disclaimer.js",
   "/blog": "pages/blog.js",
-  "/api/resolve": "pages/api/resolve.js"
+  "/privacy": "pages/privacy.js"
 }
