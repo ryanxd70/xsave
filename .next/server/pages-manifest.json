@@ -3,8 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/about": "pages/about.js",
-  "/disclaimer": "pages/disclaimer.js",
-  "/blog": "pages/blog.js",
-  "/privacy": "pages/privacy.js"
+  "/download-twitter-mp3": "pages/download-twitter-mp3.js",
+  "/api/sitemap.xml": "pages/api/sitemap.xml.js"
 }

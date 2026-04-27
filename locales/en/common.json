@@ -119,5 +119,22 @@
     "error_page_title_500": "Server Error",
     "error_page_description_500": "We're experiencing some technical difficulties. Please try again later.",
     "error_page_title_generic": "An Error Occurred",
-    "error_page_description_generic": "Something went wrong. Please try refreshing the page or come back later."
+    "error_page_description_generic": "Something went wrong. Please try refreshing the page or come back later.",
+    "xsave_extra_title_1": "Why XSave is the Go-To Tool for X Media",
+    "xsave_extra_p1": "We understand the frustration. You come across something on X that hits home—a clip that makes you laugh, a thread that's actually useful, or a piece of breaking news you want to archive. But the platform itself doesn't make it easy to save those moments for offline viewing. That’s exactly why we built XSave. We wanted a tool that just works, without the headache of signing up for yet another service or dodging shady pop-ups. It’s about giving you the control to keep the media you enjoy, stored safely on your own device.",
+    "xsave_extra_title_2": "The Technical Side: How We Deliver HD Quality",
+    "xsave_extra_p2": "When you paste a link into our downloader, XSave doesn't just grab the first file it sees. Our system carefully maps out every available quality level provided by X’s servers. From quick 360p mobile-friendly clips to crisp 1080p HD videos, we fetch the direct source. We use reliable processing methods to ensure the file you get is a standard MP4, compatible with virtually every player out there. It’s a clean process—no watermarks, no quality loss, just the original media as it was intended to be seen.",
+    "xsave_extra_title_3": "A Downloader Built on Privacy and Integrity",
+    "xsave_extra_p3": "A lot of tools in this space are cluttered and feel a bit suspicious. We took the opposite path. XSave is designed as a lightweight utility. We don't track your downloads, we don't store your personal data, and we don't even need to know who you are. The tool is simply a bridge between the tweet and your local storage. We believe that if a utility is useful, it should be respectful of the person using it. That’s our promise: a straightforward, secure, and honest experience for every user, every time.",
+    "mp3_title": "Twitter to MP3 Converter",
+    "mp3_seo_title": "Twitter to MP3: High-Quality X Audio Downloader | XSave",
+    "mp3_seo_description": "Convert and download Twitter/X videos to high-quality MP3 audio. Fast, free, and no registration required. The simplest X to MP3 downloader.",
+    "mp3_prompt": "Paste the X/Twitter URL below to convert the video to a high-quality MP3 file.",
+    "mp3_description": "Sometimes you only need the sound. Maybe it's a song, a speech, or a really sharp piece of commentary from a viral tweet. Our Twitter to MP3 converter strips the video away and leaves you with a clean, high-bitrate audio file. It's the same simple process: paste the link, hit convert, and save the audio. No technical jargon, just the MP3 you need.",
+    "twitter_to_mp3": "Twitter to MP3",
+    "convert": "Convert",
+    "converting": "Converting...",
+    "download_audio": "Download MP3",
+    "mp4_label": "Video (MP4)",
+    "mp3_label": "Audio (MP3)"
 }

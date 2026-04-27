@@ -22,11 +22,11 @@ const MoreDropdown: React.FC = () => {
     };
   }, [wrapperRef]);
   
-  const menuItems: { label: string; page: Page; icon?: React.ReactNode }[] = [
-    { label: t('about'), page: 'about' },
-    { label: t('privacy_policy'), page: 'privacy' },
-    { label: t('disclaimer_page_title'), page: 'disclaimer' },
-    { label: t('contact_us'), page: 'contact' },
+  const menuItems: { label: string; href: string; icon?: React.ReactNode }[] = [
+    { label: t('about'), href: '/about' },
+    { label: t('privacy_policy'), href: '/privacy' },
+    { label: t('disclaimer_page_title'), href: '/disclaimer' },
+    { label: t('contact_us'), href: '/contact' },
   ];
 
   return (
@@ -50,8 +50,8 @@ const MoreDropdown: React.FC = () => {
           <div className="py-2">
             {menuItems.map(item => (
                 <Link
-                  key={item.page}
-                  href={`/${item.page}`}
+                  key={item.href}
+                  href={item.href}
                   onClick={() => setIsOpen(false)}
                   className="block w-full text-left px-5 py-3 text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors cursor-pointer font-medium"
                   role="menuitem"

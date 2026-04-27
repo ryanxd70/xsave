@@ -34,10 +34,10 @@ const Header: React.FC = () => {
         { href: '/', label: t('home'), scroll: false },
         { href: '/#how-to', label: t('how_to_use_nav'), scroll: true },
         { href: '/#faq', label: t('faq'), scroll: true },
+        { href: '/download-twitter-mp3', label: t('twitter_to_mp3'), scroll: false },
         { href: '/about', label: t('about'), scroll: false },
         { href: '/contact', label: t('contact_us'), scroll: false },
         { href: '/privacy', label: t('privacy_policy'), scroll: false },
-        { href: '/blog', label: t('blog'), scroll: false },
         { href: '/disclaimer', label: t('disclaimer_page_title'), scroll: false },
     ];
 
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
                             <Link href="/" className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide">{t('home')}</Link>
                             <Link href="/#how-to" scroll={true} className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide">{t('how_to_use_nav')}</Link>
                             <Link href="/#faq" scroll={true} className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide">{t('faq')}</Link>
-                            <Link href="/blog" className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide">{t('blog')}</Link>
+                            <Link href="/download-twitter-mp3" className="text-gray-300 hover:text-white transition-colors text-sm font-semibold tracking-wide">{t('twitter_to_mp3')}</Link>
                         </div>
                         <div className="hidden md:block">
                             <MoreDropdown />

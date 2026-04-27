@@ -52,6 +52,15 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/blog/:path*',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
   turbopack: {},
   webpack: (config) => {
     config.watchOptions = {

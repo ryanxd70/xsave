@@ -64,6 +64,10 @@ export const getPageMetadata = (t: TFunction): Record<Page, { title: string; des
     title: t('contact_us'),
     description: t('contact_intro'),
   },
+  'twitter-to-mp3': {
+    title: t('mp3_seo_title'),
+    description: t('mp3_seo_description'),
+  },
 });
 
 export const getBreadcrumbSchema = (page: Page, t: TFunction, siteUrl: string, locale?: string) => {
@@ -77,6 +81,7 @@ export const getBreadcrumbSchema = (page: Page, t: TFunction, siteUrl: string, l
         privacy: t('privacy_policy'),
         disclaimer: t('disclaimer_page_title'),
         contact: t('contact_us'),
+        'twitter-to-mp3': t('mp3_title'),
     };
 
     const pathMap: { [key in Exclude<Page, 'home'>]: string } = {
@@ -84,6 +89,7 @@ export const getBreadcrumbSchema = (page: Page, t: TFunction, siteUrl: string, l
         privacy: '/privacy',
         disclaimer: '/disclaimer',
         contact: '/contact',
+        'twitter-to-mp3': '/download-twitter-mp3',
     };
 
     if (!(page in pageTitleMap)) return null;

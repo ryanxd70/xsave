@@ -1,6 +1,10 @@
 
 
+'use client';
+
 import React, { useState, useCallback, useRef } from 'react';
+import NextImage from 'next/image';
+import Link from 'next/link';
 import VideoCard from './VideoCard';
 import FAQItem from './FAQItem';
 import { LogoIcon } from './icons/LogoIcon';
@@ -12,9 +16,8 @@ import { CloseIcon } from './icons/CloseIcon';
 import { AlertTriangleIcon } from './icons/AlertTriangleIcon';
 import { motion, AnimatePresence } from 'motion/react';
 
-import Image from 'next/image';
-
 const HomePage: React.FC = () => {
+  const [mode] = useState<'mp4' | 'mp3'>('mp4');
   const [url, setUrl] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -44,7 +47,7 @@ const HomePage: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ url: videoUrl }),
+        body: JSON.stringify({ url: videoUrl, mode }),
       });
 
       const data = await response.json();
@@ -165,8 +168,24 @@ const HomePage: React.FC = () => {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-              ) : t('download')}
+              ) : mode === 'mp4' ? t('download') : t('twitter_to_mp3')}
             </button>
+          </div>
+
+          <div className="flex justify-center gap-4 mt-6">
+             <div
+                className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border-2 bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-500/20 cursor-default`}
+             >
+                <div className="w-3 h-3 rounded-full bg-white" />
+                {t('mp4_label')}
+             </div>
+             <Link
+                href="/download-twitter-mp3"
+                className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border-2 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:border-blue-500 hover:text-blue-600`}
+             >
+                <div className="w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-700" />
+                {t('mp3_label')}
+             </Link>
           </div>
         </form>
 
@@ -230,7 +249,41 @@ const HomePage: React.FC = () => {
            </p>
         </div>
       </motion.section>
-      
+
+      <motion.section 
+        className="text-left max-w-4xl mx-auto px-4 space-y-12"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <div className="space-y-6">
+           <h2 className="text-3xl font-bold text-gray-900 dark:text-white font-display">
+             {t('xsave_extra_title_1')}
+           </h2>
+           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed border-l-4 border-blue-500 pl-6 italic">
+              {t('xsave_extra_p1')}
+           </p>
+        </div>
+
+        <div className="space-y-6">
+           <h3 className="text-2xl font-bold text-gray-900 dark:text-white font-display">
+             {t('xsave_extra_title_2')}
+           </h3>
+           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+              {t('xsave_extra_p2')}
+           </p>
+        </div>
+
+        <div className="space-y-6">
+           <h3 className="text-2xl font-bold text-gray-900 dark:text-white font-display">
+             {t('xsave_extra_title_3')}
+           </h3>
+           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+              {t('xsave_extra_p3')}
+           </p>
+        </div>
+      </motion.section>
+
       <motion.section 
         id="how-to" 
         className="text-left max-w-4xl mx-auto px-4"
@@ -254,7 +307,7 @@ const HomePage: React.FC = () => {
                 <p className="leading-relaxed text-lg sm:text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_2')}</p>
                 <div className="relative w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-2xl bg-white dark:bg-gray-800">
                   <div className="aspect-[3/2] sm:aspect-[2/1] relative">
-                    <Image 
+                    <NextImage 
                       src="/images/tutorial-step-2.png" 
                       alt="Selecting Copy Link from the Twitter share menu" 
                       fill
@@ -272,7 +325,7 @@ const HomePage: React.FC = () => {
                 <p className="leading-relaxed text-lg sm:text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_3')}</p>
                 <div className="relative w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-2xl bg-white dark:bg-gray-800">
                   <div className="aspect-[2/1] sm:aspect-[4/1] relative">
-                    <Image 
+                    <NextImage 
                       src="/images/xs2.png" 
                       alt="Entering xsave.app in the browser address bar" 
                       fill
@@ -290,7 +343,7 @@ const HomePage: React.FC = () => {
                 <p className="leading-relaxed text-lg sm:text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_4')}</p>
                 <div className="relative w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-2xl bg-white dark:bg-gray-800">
                   <div className="aspect-[2/1] sm:aspect-[4/1] relative">
-                    <Image 
+                    <NextImage 
                       src="/images/xs3.png" 
                       alt="Pasting the video URL into the XSave downloader" 
                       fill
@@ -308,7 +361,7 @@ const HomePage: React.FC = () => {
                 <p className="leading-relaxed text-lg sm:text-xl text-gray-700 dark:text-gray-300">{t('how_to_step_5')}</p>
                 <div className="relative w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-2xl bg-white dark:bg-gray-800">
                   <div className="aspect-[3/2] sm:aspect-[2/1] relative">
-                    <Image 
+                    <NextImage 
                       src="/images/xs4.png" 
                       alt="Choosing a video quality to download" 
                       fill

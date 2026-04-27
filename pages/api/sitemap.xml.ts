@@ -2,11 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { execSync } from 'child_process';
 import path from 'path';
 import { languages } from '../../i18n-config';
-import { getPosts } from '../../lib/wordpress';
 
 const siteUrl = 'https://xsave.app';
 // Static pages to include in the sitemap
-const staticPages = ['', '/about', '/privacy', '/disclaimer', '/contact', '/blog']; 
+const staticPages = ['', '/download-twitter-mp3', '/about', '/privacy', '/disclaimer', '/contact']; 
 const locales = Object.keys(languages);
 
 /**
@@ -26,8 +25,6 @@ function getGitLastModified(filePath: string): string {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const posts = await getPosts();
-  
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">`;
 
@@ -35,18 +32,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   staticPages.forEach(page => {
     let pageFileName = '';
     if (page === '') pageFileName = 'index.tsx';
-    else if (page === '/blog') pageFileName = 'blog/index.tsx';
+    else if (page === '/download-twitter-mp3') pageFileName = 'download-twitter-mp3.tsx';
     else pageFileName = `${page.slice(1)}.tsx`;
 
     const filePath = path.join(process.cwd(), 'pages', pageFileName);
     const lastmod = getGitLastModified(filePath);
 
     locales.forEach(locale => {
-      // Strategy: Homepage and Blog index for all locales, others only for 'en'
+      // Strategy: Homepage and tools for all locales, others only for 'en'
       const isHomepage = page === '';
-      const isBlogIndex = page === '/blog';
+      const isTool = page === '/download-twitter-mp3';
       
-      if (!isHomepage && !isBlogIndex && locale !== 'en') {
+      if (!isHomepage && !isTool && locale !== 'en') {
         return; // Skip non-English subpages as they are no-indexed.
       }
       
@@ -63,34 +60,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       locales.forEach(alternateLocale => {
         const alternateLocalePrefix = alternateLocale === 'en' ? '' : `/${alternateLocale}`;
         const alternateUrl = `${siteUrl}${alternateLocalePrefix}${page}${trailingSlash}`;
-        xml += `
-    <xhtml:link rel="alternate" hreflang="${alternateLocale}" href="${alternateUrl}" />`;
-      });
-      
-      xml += `
-  </url>`;
-    });
-  });
-
-  // 2. Process Blog Posts
-  posts.forEach(post => {
-    const page = `/blog/${post.slug}`;
-    const lastmod = new Date(post.date).toISOString().split('T')[0];
-
-    locales.forEach(locale => {
-      // Blog posts are indexed in all languages as they don't have noindex meta
-      const localePrefix = locale === 'en' ? '' : `/${locale}`;
-      const pageUrl = `${siteUrl}${localePrefix}${page}`;
-      
-      xml += `
-  <url>
-    <loc>${pageUrl}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <xhtml:link rel="alternate" hreflang="x-default" href="${siteUrl}${page}" />`;
-
-      locales.forEach(alternateLocale => {
-        const alternateLocalePrefix = alternateLocale === 'en' ? '' : `/${alternateLocale}`;
-        const alternateUrl = `${siteUrl}${alternateLocalePrefix}${page}`;
         xml += `
     <xhtml:link rel="alternate" hreflang="${alternateLocale}" href="${alternateUrl}" />`;
       });

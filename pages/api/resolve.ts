@@ -27,7 +27,7 @@ export default async function handler(
         return res.status(405).end('Method Not Allowed');
     }
 
-    const { url } = req.body;
+    const { url, mode } = req.body;
 
     if (!url || (typeof url === 'string' && (!url.includes('twitter.com/') && !url.includes('x.com/')))) {
         return res.status(400).json({ message: 'Invalid Twitter/X URL provided. Please check the link and try again.' });
@@ -41,41 +41,64 @@ export default async function handler(
             const dynamicRequire = eval('require');
             ytdlp = dynamicRequire('yt-dlp-exec');
         } catch (e) {
-            throw new Error('yt-dlp-exec is not installed in this environment. Please install it on your local/VPS setup.');
+            throw new Error('yt-dlp-exec is not installed in this environment.');
         }
 
         const videoInfo: YtdlpInfo = await ytdlp(url, {
             dumpSingleJson: true,
             noWarnings: true,
             referer: 'https://twitter.com/',
-            // This is the key optimization: use Twitter's Syndication API, which is often faster for public tweets.
             extractorArgs: {
                 twitter: 'api=Syndication',
             },
         } as any);
 
         if (!videoInfo || !videoInfo.formats) {
-            throw new Error('Could not retrieve video information. The URL may be invalid or the tweet may not contain a video.');
+            throw new Error('Could not retrieve video information.');
+        }
+
+        if (mode === 'mp3') {
+            const videoData: VideoData = {
+                title: videoInfo.title || 'Untitled Video',
+                thumbnail: videoInfo.thumbnail,
+                variants: [
+                    {
+                        quality: 'Download MP3',
+                        url: url, // Use the original tweet URL for the extractor
+                        ext: 'mp3'
+                    }
+                ],
+                tweetUrl: url
+            };
+            return res.status(200).json(videoData);
         }
 
         const variants: Variant[] = videoInfo.formats
-            // Keep formats that have a URL and audio (acodec !== 'none'). This filters out video-only streams.
             .filter((format) => format.url && format.acodec !== 'none')
             .map((format) => {
                 let quality: string;
-                // If a format has no video codec, or it's a very low resolution (likely album art), treat as audio.
-                if (format.vcodec === 'none' || !format.height || format.height < 100) {
-                    quality = 'Download Audio Only';
+                const isAudioOnly = format.vcodec === 'none' || !format.height || format.height < 100;
+
+                if (mode === 'mp3') {
+                    if (!isAudioOnly) return null;
+                    quality = 'Download MP3';
                 } else {
-                    // Otherwise, it's a video stream
-                    quality = `Download ${format.width}x${format.height}: ${format.ext.toUpperCase()}`;
+                    // If a format has no video codec, or it's a very low resolution (likely album art), treat as audio.
+                    if (isAudioOnly) {
+                        quality = 'Download Audio Only';
+                    } else {
+                        // Otherwise, it's a video stream
+                        quality = `Download ${format.width}x${format.height}: ${format.ext.toUpperCase()}`;
+                    }
                 }
 
                 return {
                     quality,
                     url: format.url,
+                    ext: format.ext,
                 };
-            });
+            })
+            .filter((v): v is Variant => v !== null);
 
         // Deduplicate variants based on the unique quality string and then sort them
         const uniqueVariants = Array.from(new Map(variants.map(v => [v.quality, v])).values())
@@ -111,6 +134,7 @@ export default async function handler(
             title: videoInfo.title || 'Untitled Video',
             thumbnail: videoInfo.thumbnail,
             variants: uniqueVariants,
+            tweetUrl: url,
         };
 
         return res.status(200).json(videoData);
