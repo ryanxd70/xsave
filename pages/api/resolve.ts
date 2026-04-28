@@ -75,7 +75,7 @@ export default async function handler(
 
         const variants: Variant[] = videoInfo.formats
             .filter((format) => format.url && format.acodec !== 'none')
-            .map((format) => {
+            .map((format): Variant | null => {
                 let quality: string;
                 const isAudioOnly = format.vcodec === 'none' || !format.height || format.height < 100;
 

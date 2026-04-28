@@ -3,6 +3,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
+  "/api/resolve": "pages/api/resolve.js",
   "/download-twitter-mp3": "pages/download-twitter-mp3.js",
-  "/api/sitemap.xml": "pages/api/sitemap.xml.js"
+  "/api/download": "pages/api/download.js"
 }
