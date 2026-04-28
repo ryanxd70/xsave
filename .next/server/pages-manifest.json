@@ -2,7 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/resolve": "pages/api/resolve.js",
-  "/download-twitter-mp3": "pages/download-twitter-mp3.js",
-  "/": "pages/index.js"
+  "/": "pages/index.js",
+  "/download-twitter-mp3": "pages/download-twitter-mp3.js"
 }

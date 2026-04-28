@@ -75,21 +75,16 @@ export default async function handler(
 
         const variants: Variant[] = videoInfo.formats
             .filter((format) => format.url && format.acodec !== 'none')
-            .map((format): Variant | null => {
+            .map((format): Variant => {
                 let quality: string;
                 const isAudioOnly = format.vcodec === 'none' || !format.height || format.height < 100;
 
-                if (mode === 'mp3') {
-                    if (!isAudioOnly) return null;
-                    quality = 'Download MP3';
+                // If a format has no video codec, or it's a very low resolution (likely album art), treat as audio.
+                if (isAudioOnly) {
+                    quality = 'Download Audio Only';
                 } else {
-                    // If a format has no video codec, or it's a very low resolution (likely album art), treat as audio.
-                    if (isAudioOnly) {
-                        quality = 'Download Audio Only';
-                    } else {
-                        // Otherwise, it's a video stream
-                        quality = `Download ${format.width}x${format.height}: ${format.ext.toUpperCase()}`;
-                    }
+                    // Otherwise, it's a video stream
+                    quality = `Download ${format.width}x${format.height}: ${format.ext.toUpperCase()}`;
                 }
 
                 return {
@@ -97,8 +92,7 @@ export default async function handler(
                     url: format.url,
                     ext: format.ext,
                 };
-            })
-            .filter((v): v is Variant => v !== null);
+            });
 
         // Deduplicate variants based on the unique quality string and then sort them
         const uniqueVariants = Array.from(new Map(variants.map(v => [v.quality, v])).values())
