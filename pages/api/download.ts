@@ -20,28 +20,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.setHeader('Content-Disposition', `attachment; filename="${safeFilename}"`);
 
       // Use yt-dlp to extract best audio and convert to mp3 on the fly
-      let ytdlp;
-      try {
-        const dynamicRequire = eval('require');
-        ytdlp = dynamicRequire('yt-dlp-exec');
-      } catch (e) {
-        throw new Error('yt-dlp-exec is not installed');
-      }
+      const ytdlpArgs = [
+        targetUrl,
+        '--format', 'bestaudio',
+        '--extract-audio',
+        '--audio-format', 'mp3',
+        '--audio-quality', '0',
+        '--output', '-',
+        '--no-playlist',
+        '--no-warnings',
+        '--no-progress',
+        '--quiet',
+        '--referer', 'https://twitter.com/',
+        '--extractor-args', 'twitter:api=Syndication',
+      ];
 
-      const ytProcess = ytdlp.exec(targetUrl, {
-        format: 'bestaudio',
-        extractAudio: true,
-        audioFormat: 'mp3',
-        audioQuality: 0,
-        output: '-',
-        noPlaylist: true,
-        noWarnings: true,
-        quiet: true,
-        referer: 'https://twitter.com/',
-        extractorArgs: 'twitter:api=Syndication',
-      }, {
-        stdio: ['ignore', 'pipe', 'pipe']
-      });
+      // Use spawn directly for maximum control over the stream and binary path
+      const ytProcess = spawn('yt-dlp', ytdlpArgs);
 
       ytProcess.stdout.pipe(res);
 

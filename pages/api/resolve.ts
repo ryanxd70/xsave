@@ -1,4 +1,4 @@
-// Fix: Use a type-only import for Next.js types to fix module resolution errors.
+import { spawn } from 'child_process';
 import { NextApiRequest, NextApiResponse } from 'next';
 import type { VideoData, Variant } from '../../types';
 
@@ -18,6 +18,45 @@ interface YtdlpInfo {
   formats: YtdlpFormat[];
 }
 
+function getYtdlpInfo(url: string): Promise<YtdlpInfo> {
+    return new Promise((resolve, reject) => {
+        const args = [
+            url,
+            '--dump-single-json',
+            '--no-warnings',
+            '--referer', 'https://twitter.com/',
+            '--extractor-args', 'twitter:api=Syndication',
+        ];
+
+        const ytProcess = spawn('yt-dlp', args);
+        let stdout = '';
+        let stderr = '';
+
+        ytProcess.stdout.on('data', (data) => {
+            stdout += data.toString();
+        });
+
+        ytProcess.stderr.on('data', (data) => {
+            stderr += data.toString();
+        });
+
+        ytProcess.on('close', (code) => {
+            if (code !== 0) {
+                return reject(new Error(stderr || `yt-dlp exited with code ${code}`));
+            }
+            try {
+                resolve(JSON.parse(stdout));
+            } catch (e) {
+                reject(new Error('Failed to parse yt-dlp output'));
+            }
+        });
+
+        ytProcess.on('error', (err) => {
+            reject(err);
+        });
+    });
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -34,24 +73,7 @@ export default async function handler(
     }
     
     try {
-        // Use require to avoid build-time errors when the package is missing in this environment
-        let ytdlp;
-        try {
-            // Use eval('require') to hide the dependency from Webpack's static analysis
-            const dynamicRequire = eval('require');
-            ytdlp = dynamicRequire('yt-dlp-exec');
-        } catch (e) {
-            throw new Error('yt-dlp-exec is not installed in this environment.');
-        }
-
-        const videoInfo: YtdlpInfo = await ytdlp(url, {
-            dumpSingleJson: true,
-            noWarnings: true,
-            referer: 'https://twitter.com/',
-            extractorArgs: {
-                twitter: 'api=Syndication',
-            },
-        } as any);
+        const videoInfo = await getYtdlpInfo(url);
 
         if (!videoInfo || !videoInfo.formats) {
             throw new Error('Could not retrieve video information.');

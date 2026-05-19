@@ -66,7 +66,7 @@ const HomePage: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [t]);
+  }, [t, mode]);
 
   const handlePaste = useCallback(async () => {
     try {
@@ -257,7 +257,7 @@ const HomePage: React.FC = () => {
         viewport={{ once: true, margin: "-100px" }}
       >
         <div className="space-y-6">
-           <h2 className="text-3xl font-bold text-gray-900 dark:text-white font-display">
+           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white font-display">
              {t('xsave_extra_title_1')}
            </h2>
            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed border-l-4 border-blue-500 pl-6 italic">
@@ -266,7 +266,7 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className="space-y-6">
-           <h3 className="text-2xl font-bold text-gray-900 dark:text-white font-display">
+           <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white font-display">
              {t('xsave_extra_title_2')}
            </h3>
            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -275,7 +275,7 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className="space-y-6">
-           <h3 className="text-2xl font-bold text-gray-900 dark:text-white font-display">
+           <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white font-display">
              {t('xsave_extra_title_3')}
            </h3>
            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
